@@ -8,6 +8,9 @@ import { DefaultModule } from './layouts/default/default.module';
 import { LoginComponent } from './shared/components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NotemissionComponent } from './modules/notemission/notemission.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -15,14 +18,21 @@ import { NotemissionComponent } from './modules/notemission/notemission.componen
     AppComponent,
     LoginComponent,
     NotemissionComponent,
+
+    
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DefaultModule,
+    ReactiveFormsModule,
     FormsModule,
-        ReactiveFormsModule
+
+
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

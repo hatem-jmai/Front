@@ -1,0 +1,126 @@
+<div class="dossier">
+ 
+   
+  <h1 class="title">بطاقة ارشادات حول مذكرة بالخارج</h1>
+  <div class="form-container2"></div>
+      <h4>الوزارة / المؤسسة أو المنشأة العمومية.I</h4>
+      <mat-form-field >
+        <input matInput type="text" value="المعهد الوطني للإحصاء" >
+      </mat-form-field>
+  </div>
+  
+  <div class="form-container2">
+    <mat-form-field >
+      <input matInput type="text" placeholder="Organisme Etranger" >
+    </mat-form-field>
+
+    <mat-tab-group>
+      <mat-tab label="Saisir un programme">
+        <mat-form-field class="a">
+          <input matInput type="text" placeholder="Programme de Coopération" >
+        </mat-form-field>
+        <button mat-raised-button color="warn">save</button>
+      </mat-tab>
+      <mat-tab label="selectionner un programme">
+        <mat-form-field class="a">
+          <mat-select placeholder="Programme de Coopération" >
+            <mat-option value="option">Finalisée</mat-option>
+            <mat-option value="option">Encours</mat-option>
+            <mat-option value="option">Annuler</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-tab>
+    </mat-tab-group>
+
+    <mat-form-field >
+      <input matInput type="text" placeholder="Sujet" >
+    </mat-form-field>
+  </div>
+  <div class="form-container1">
+
+    <mat-form-field>
+      <mat-select placeholder="Pays de destination" >
+        <mat-option value="option">Finalisée</mat-option>
+        <mat-option value="option">Encours</mat-option>
+        <mat-option value="option">Annuler</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Ville de destination" >
+        <mat-option value="option">Finalisée</mat-option>
+        <mat-option value="option">Encours</mat-option>
+        <mat-option value="option">Annuler</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field >
+      <input matInput type="text" placeholder="Langue de travail" >
+    </mat-form-field>
+  </div>
+
+  <div class="form-container1">
+    <mat-form-field>
+      <input matInput  placeholder="date début" >
+      <mat-datepicker-toggle > </mat-datepicker-toggle>
+      <mat-datepicker ></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput  placeholder="date fin">
+      <mat-datepicker-toggle > </mat-datepicker-toggle>
+      <mat-datepicker ></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="date" placeholder="date limite de réponse" >
+      <mat-datepicker-toggle > </mat-datepicker-toggle>
+      <mat-datepicker ></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+  <div class="form-container2">
+  <mat-tab-group>
+    <mat-tab label="Nombre de participants">
+        <mat-form-field style="width: 100px; float: left;margin-left: 50px;">
+          <input matInput min="0" value="0" type="number" placeholder="INS" >
+        </mat-form-field>
+        <mat-form-field style="width: 100px;margin-left: 50px;">
+          <input matInput min="0" value="0" type="number" placeholder="SP" >
+        </mat-form-field>
+    </mat-tab>
+
+    <mat-tab label="Prise en charge">
+      <mat-card>
+        <mat-card-title style="color: darkslategrey; font-size: small;">Transport :</mat-card-title>
+        <mat-checkbox value="Organisme Etranger" style="font-size: 15px;">Organisme Etranger</mat-checkbox>
+        <mat-checkbox value="INS" style="font-size: 15px;margin-left: 50px;">INS</mat-checkbox>
+      </mat-card>
+      <mat-card>
+        <mat-card-title style="color: darkslategrey; font-size: small;">Hébergement :</mat-card-title>
+        <mat-checkbox value="Organisme Etranger" style="font-size: 15px;">Organisme Etranger</mat-checkbox>
+        <mat-checkbox value="INS" style="font-size: 15px;margin-left: 50px;">INS</mat-checkbox>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+
+
+  <div>
+    <mat-card style="float: left;width: 300px;">
+      <mat-card-title style="color: darkslategrey; font-size:medium;">La date d'envoi des documents de visite au ministère :</mat-card-title>
+      <mat-form-field>
+        <input matInput type="date" >
+        <mat-datepicker-toggle > </mat-datepicker-toggle>
+        <mat-datepicker ></mat-datepicker>
+      </mat-form-field>
+    </mat-card>
+    <mat-card style="margin-left: 150px;float: left;">
+      <mat-card-title style="color: darkslategrey; font-size: medium;">La date d'acceptation de visite :</mat-card-title>
+      <mat-form-field>
+        <input matInput type="date" >
+        <mat-datepicker-toggle > </mat-datepicker-toggle>
+        <mat-datepicker ></mat-datepicker>
+      </mat-form-field>
+    </mat-card>
+  </div>
+</div>

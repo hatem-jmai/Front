@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
+import * as jspdf from 'jspdf';
+import html2canvas from  'html2canvas' ;
+import { Dossier } from 'src/app/entities/dossier';
+import { DatePipe, formatDate } from '@angular/common';
 
 export interface PeriodicElement {
  
@@ -13,20 +18,85 @@ export interface PeriodicElement {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
-
-
- 
-
-  constructor(private dashboardService: DashboardService,private router:Router) { }
+dossier:Dossier;
+mission:Dossier;
+pays=[];
+//pipe:DatePipe;
+/*
+dateArriveVisite:string;
+dateDeb:string;
+dateFin:string;
+dateLimiteReponce:string;
+*/
+  constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
-   
+    this.dossier = new Dossier();
+    this.dossier.annee=2020;
+    this.dossier.type_visite="mission";
+    this.getAllPays();
+  }
+/*
+  changerFormatDate(){
+    
+    this.dateArriveVisite=formatDate(this.dossier.date_arrive_visite, 'dd-MM-yyyy','en-US');
+    this.dateDeb=formatDate(this.dossier.date_deb, 'dd-MM-yyyy','en-US');
+    this.dateFin=formatDate(this.dossier.date_fin, 'dd-MM-yyyy','en-US');
+    this.dateLimiteReponce=formatDate(this.dossier.date_limite_reponce, 'dd-MM-yyyy','en-US');
+
+    var momentVariable = moment(this.dateArriveVisite, 'MM-DD-YYYY');  
+    var stringvalue = momentVariable.format('YYYY-MM-DD');  
+
+  }
+*/
+  getAllPays(){
+    this.Myservice.getAllPays().subscribe(data=>{
+      console.log(data),
+      error => console.log(error);
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.pays.push(data[key]);
+        }
+      }
+    });
+  }
+
+  createVisiteMession(){
+    console.log(this.dossier);
+    
+    this.Myservice.createDossier(this.dossier).subscribe((data:any) =>{
+      console.log(data),
+      error => console.log(error),
+      this.mission = new Dossier();
+      this.mission=data;
+      console.log(this.mission);
+    });
+    //this.registerForm.reset();
   }
 
    suivant(){
-this.router.navigateByUrl('/dashboard/noteM');
+    this.createVisiteMession();
+    //this.router.navigateByUrl('/dashboard/noteM');
+  }
 
-}
+captureScreen()  
+{  console.log("ahla")
+  var data = document.getElementById('contentToConvert');  
+  html2canvas(data).then(canvas => {  
+    // Few necessary setting options  
+    var imgWidth = 208;   
+    var pageHeight = 295;    
+    var imgHeight = canvas.height * imgWidth / canvas.width;  
+    var heightLeft = imgHeight;  
+
+    const contentDataURL = canvas.toDataURL('image/png')  
+    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+    var position = 0;  
+    pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+    pdf.save('MYPdf.pdf'); // Generated PDF   
+  });  
+}  
 
 }

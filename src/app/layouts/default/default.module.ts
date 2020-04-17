@@ -5,15 +5,18 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule } from '@angular/material';
+import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonToggleModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatToolbarModule, MatTabsModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { FicheRenseignementComponent } from 'src/app/modules/fiche-renseignement/fiche-renseignement.component';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    PostsComponent
+    PostsComponent,
+    FicheRenseignementComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,21 @@ import { DashboardService } from 'src/app/modules/dashboard.service';
     FlexLayoutModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonToggleModule,
+    MatSelectModule,           
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     DashboardService

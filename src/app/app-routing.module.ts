@@ -5,6 +5,11 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PostsComponent } from './modules/posts/posts.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { NotemissionComponent } from './modules/notemission/notemission.component';
+import { FicheRenseignementComponent } from './modules/fiche-renseignement/fiche-renseignement.component';
+import { DefaultModule } from './layouts/default/default.module';
+import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
+import { SignInComponent } from './shared/components/sign-in/sign-in.component';
+
 
 const routes: Routes = [{
   
@@ -13,13 +18,15 @@ const routes: Routes = [{
   children: [
     {path: 'dossiervisite',component: DashboardComponent},
    {path: 'noteM',component: NotemissionComponent},
-   {path: 'posts',component: PostsComponent}
-  
-  
+   {path: 'fiche',component: FicheRenseignementComponent},
+   {path: 'posts',component: PostsComponent},
+   //{path: 'borderau',component:BorderouComponent},
+   //{path: 'rappel-rapport',component:RappelRapportComponent}
   ]
 },
-
-{ path: '', component: LoginComponent},
+{ path: 'sign-up', component: SignUpComponent},
+{ path: 'sign-in', component: SignInComponent},
+{ path: '', component: SignInComponent},
 ];
 
 
