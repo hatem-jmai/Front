@@ -7,6 +7,7 @@ import * as jspdf from 'jspdf';
 import html2canvas from  'html2canvas' ;
 import { Dossier } from 'src/app/entities/dossier';
 import { DatePipe, formatDate } from '@angular/common';
+import { Pays_destination } from 'src/app/entities/pays_destination';
 
 export interface PeriodicElement {
  
@@ -23,13 +24,10 @@ export class DashboardComponent implements OnInit {
 dossier:Dossier;
 mission:Dossier;
 pays=[];
-//pipe:DatePipe;
-/*
-dateArriveVisite:string;
-dateDeb:string;
-dateFin:string;
-dateLimiteReponce:string;
-*/
+pays_destination:string='';
+villes=[];
+Destination:Pays_destination;
+ville_destination:string='';
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
@@ -51,6 +49,23 @@ dateLimiteReponce:string;
 
   }
 */
+selected(){
+  console.log(this.pays_destination);
+  this.Destination=new Pays_destination();
+  this.Destination.pays_destination_libelle=this.pays_destination;
+  this.Myservice.getAllVilles(this.Destination).subscribe(data=>{
+    console.log(data),
+    error => console.log(error);
+    if (this.villes.length> 0) {
+      this.villes.splice(0,this.villes.length);
+    };
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        this.villes.push(data[key]);
+      }
+    }
+  });
+}
   getAllPays(){
     this.Myservice.getAllPays().subscribe(data=>{
       console.log(data),

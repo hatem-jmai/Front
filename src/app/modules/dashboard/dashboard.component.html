@@ -58,8 +58,9 @@
               <div class="form-row">
                   <div class="form-group col-4">
                       <label>Pays de destination</label>
-                      <select class="form-control col-sm-8" id="type"   name="Pays de destination">
-                              <option *ngFor="let Pays of pays" >
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="pays_destination" name="pays_destination" (change)="selected()">
+                              <option value="" [disabled]="true">selectioner une pays</option>
+                              <option *ngFor="let Pays of pays" [selected]="Pays.libelle_pays=='tunisie'" [value]="Pays.libelle_pays">
                                 {{Pays.libelle_pays}}
                               </option>
                         </select>
@@ -67,9 +68,12 @@
   
                   <div class="form-group col-4">
                       <label>Ville de destination</label>
-                      <input type="text"  class="form-control" 
-                       />
-                     
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="ville_destination" name="ville_destination">
+                         <option value="" [disabled]="true">selectioner une ville</option>
+                          <option *ngFor="let ville of villes"  [value]="ville.libelle_ville">
+                            {{ville.libelle_ville}}
+                          </option>
+                      </select>
                   </div>
                   <div class="form-group col-4">
                       <label>Langues de travail</label>

@@ -18,6 +18,9 @@ export class DashboardService {
   getAllPays():Observable<object>{
     return this.http.get('http://localhost:8000/paysdestination');
   }
+  getAllVilles(Destination:object):Observable<object>{
+    return this.http.post('http://localhost:8000/villedestination/villes',Destination);
+  }
 
   bigChart() {
     return [{
