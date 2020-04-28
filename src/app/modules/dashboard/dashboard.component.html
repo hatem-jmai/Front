@@ -19,23 +19,27 @@
                   </div>
                   <div class="form-group col-3">
                       <label>Nature</label>
-                      <input type="text"   [(ngModel)]="dossier.nature" name="nature"
-                       />
-                     
+                      <input type="text" [(ngModel)]="dossier.nature" name="nature"/>
                   </div>
                   <div class="form-group col-4">
                       <label>Statut</label>
-                      <input type="text"   [(ngModel)]="dossier.statut" name="statut"
-                       />
-                     
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.statut" name="statut">
+                        <!-- <option value="" [disabled]="true">selectionner un statut</option> -->
+                              <option  [value]="En-cours">En-cours</option>
+                              <option  [value]="Finalise">Finalisé</option>
+                              <option  [value]="Annule">Annulé</option>
+                      </select>
                   </div>
               </div>
   
               <div class="form-row">
               <div class="form-group col-5">
                   <label>Organisme etrangére</label>
-                  <select type="text"  
-                   >
+                  <select class="form-control col-sm-8" id="type"  [(ngModel)]="organisme_etranger" name="organisme_etranger">
+                    <option value="" [disabled]="true">selectionner un organisme</option>
+                              <option *ngFor="let org of organismes"  [value]="org.libelle_org">
+                                {{org.libelle_org}}
+                              </option>
                   </select>
               </div>
               </div>
@@ -59,7 +63,7 @@
                   <div class="form-group col-4">
                       <label>Pays de destination</label>
                       <select class="form-control col-sm-8" id="type"  [(ngModel)]="pays_destination" name="pays_destination" (change)="selected()">
-                              <option value="" [disabled]="true">selectioner une pays</option>
+                              <option value="" [disabled]="true">selectionner une pays</option>
                               <option *ngFor="let Pays of pays" [selected]="Pays.libelle_pays=='tunisie'" [value]="Pays.libelle_pays">
                                 {{Pays.libelle_pays}}
                               </option>
@@ -69,7 +73,7 @@
                   <div class="form-group col-4">
                       <label>Ville de destination</label>
                       <select class="form-control col-sm-8" id="type"  [(ngModel)]="ville_destination" name="ville_destination">
-                         <option value="" [disabled]="true">selectioner une ville</option>
+                         <option value="" [disabled]="true">selectionner une ville</option>
                           <option *ngFor="let ville of villes"  [value]="ville.libelle_ville">
                             {{ville.libelle_ville}}
                           </option>
@@ -77,9 +81,7 @@
                   </div>
                   <div class="form-group col-4">
                       <label>Langues de travail</label>
-                      <input type="text"   [(ngModel)]="dossier.langues" name="langues"
-                       />
-                     
+                      <input type="text"   [(ngModel)]="dossier.langues" name="langues"/>
                   </div>
               </div>
   

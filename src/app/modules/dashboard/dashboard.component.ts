@@ -24,17 +24,21 @@ export class DashboardComponent implements OnInit {
 dossier:Dossier;
 mission:Dossier;
 pays=[];
+organismes=[];
 pays_destination:string='';
 villes=[];
 Destination:Pays_destination;
 ville_destination:string='';
+organisme_etranger:string='';
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
     this.dossier = new Dossier();
     this.dossier.annee=2020;
     this.dossier.type_visite="mission";
+    this.dossier.statut="En-cours";
     this.getAllPays();
+    this.getAllOrganismesEtrangers();
   }
 /*
   changerFormatDate(){
@@ -77,7 +81,17 @@ selected(){
       }
     });
   }
-
+  getAllOrganismesEtrangers(){
+    this.Myservice.getAllOrganismesEtrangers().subscribe(data=>{
+      console.log(data),
+      error => console.log(error);
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.organismes.push(data[key]);
+        }
+      }
+    });
+  }
   createVisiteMession(){
     console.log(this.dossier);
     
