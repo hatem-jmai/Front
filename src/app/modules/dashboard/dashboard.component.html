@@ -24,10 +24,10 @@
                   <div class="form-group col-4">
                       <label>Statut</label>
                       <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.statut" name="statut">
-                        <!-- <option value="" [disabled]="true">selectionner un statut</option> -->
-                              <option  [value]="En-cours">En-cours</option>
-                              <option  [value]="Finalise">Finalisé</option>
-                              <option  [value]="Annule">Annulé</option>
+                        <option  [disabled]="true">selectionner une statut</option>
+                              <option  value="En-cours">En-cours</option>
+                              <option  value="Finalise">Finalisé</option>
+                              <option  value="Annule">Annulé</option>
                       </select>
                   </div>
               </div>
@@ -35,7 +35,7 @@
               <div class="form-row">
               <div class="form-group col-5">
                   <label>Organisme etrangére</label>
-                  <select class="form-control col-sm-8" id="type"  [(ngModel)]="organisme_etranger" name="organisme_etranger">
+                  <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.organisme_etranger_libelle" name="organisme_etranger">
                     <option value="" [disabled]="true">selectionner un organisme</option>
                               <option *ngFor="let org of organismes"  [value]="org.libelle_org">
                                 {{org.libelle_org}}
@@ -62,7 +62,7 @@
               <div class="form-row">
                   <div class="form-group col-4">
                       <label>Pays de destination</label>
-                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="pays_destination" name="pays_destination" (change)="selected()">
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.pays_destination_libelle" name="pays_destination" (change)="selected()">
                               <option value="" [disabled]="true">selectionner une pays</option>
                               <option *ngFor="let Pays of pays" [selected]="Pays.libelle_pays=='tunisie'" [value]="Pays.libelle_pays">
                                 {{Pays.libelle_pays}}

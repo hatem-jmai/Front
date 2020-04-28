@@ -25,20 +25,20 @@ dossier:Dossier;
 mission:Dossier;
 pays=[];
 organismes=[];
-pays_destination:string='';
+//pays_destination:string='';
 villes=[];
 Destination:Pays_destination;
 ville_destination:string='';
-organisme_etranger:string='';
+//organisme_etranger:string='selectionner une statut';
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
+    this.getAllPays();
+    this.getAllOrganismesEtrangers();
     this.dossier = new Dossier();
     this.dossier.annee=2020;
     this.dossier.type_visite="mission";
-    this.dossier.statut="En-cours";
-    this.getAllPays();
-    this.getAllOrganismesEtrangers();
+    
   }
 /*
   changerFormatDate(){
@@ -54,9 +54,9 @@ organisme_etranger:string='';
   }
 */
 selected(){
-  console.log(this.pays_destination);
+  console.log(this.dossier.pays_destination_libelle);
   this.Destination=new Pays_destination();
-  this.Destination.pays_destination_libelle=this.pays_destination;
+  this.Destination.pays_destination_libelle=this.dossier.pays_destination_libelle;
   this.Myservice.getAllVilles(this.Destination).subscribe(data=>{
     console.log(data),
     error => console.log(error);

@@ -14,6 +14,8 @@ export class Dossier{
     nbr_participant_sp:number;
     frais_transport:boolean;
     frais_residence:boolean;
+    pays_destination_libelle:string;
+    organisme_etranger_libelle:string;
     constructor(){}
     
 }
