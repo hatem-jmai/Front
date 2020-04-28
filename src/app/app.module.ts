@@ -9,6 +9,8 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NotemissionComponent } from './modules/notemission/notemission.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RappelRapportComponent } from './modules/rappel-rapport/rappel-rapport.component';
+import { BorderouComponent } from './modules/borderou/borderou.component';
 
 
 
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     NotemissionComponent,
+    RappelRapportComponent,
+    BorderouComponent,
 
     
   ],

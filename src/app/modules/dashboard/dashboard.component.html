@@ -8,18 +8,19 @@
               <div class="form-row">
                   <div class="form-group col-2">
                       <label>Date</label>
-                      <input type="date" name="date_arrive_invitation" [(ngModel)]="dossier.date_arrive_invitation" >
+                      <input type="date" name="date_arrive_invitation" class="form-control"
+                      [(ngModel)]="dossier.date_arrive_invitation" >
                   </div>
   
                   <div class="form-group col-3">
                       <label>Direction Centrale</label>
-                      <input type="text"  
+                      <input type="text"  class="form-control"
                        />
                      
                   </div>
                   <div class="form-group col-3">
                       <label>Nature</label>
-                      <input type="text" [(ngModel)]="dossier.nature" name="nature"/>
+                      <input type="text" class="form-control" [(ngModel)]="dossier.nature" name="nature"/>
                   </div>
                   <div class="form-group col-4">
                       <label>Statut</label>
@@ -35,7 +36,8 @@
               <div class="form-row">
               <div class="form-group col-5">
                   <label>Organisme etrangére</label>
-                  <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.organisme_etranger_libelle" name="organisme_etranger">
+                  <select class="form-control"[(ngModel)]="dossier.organisme_etranger_libelle"
+                   name="organisme_etranger">
                     <option value="" [disabled]="true">selectionner un organisme</option>
                               <option *ngFor="let org of organismes"  [value]="org.libelle_org">
                                 {{org.libelle_org}}
@@ -47,14 +49,14 @@
               <div class="form-row">
                   <div class="form-group col">
                       <label>Programmme de coopération</label>
-                      <input type="text" />
+                      <input type="text" class="form-control"/>
                   </div>  
               </div>
               
               <div class="form-row">
                   <div class="form-group col">
                       <label>Sujet</label>
-                      <input type="text"  [(ngModel)]="dossier.sujet" name="sujet"/>
+                      <input type="text" class="form-control" [(ngModel)]="dossier.sujet" name="sujet"/>
                   </div>  
   
               </div>
@@ -62,7 +64,7 @@
               <div class="form-row">
                   <div class="form-group col-4">
                       <label>Pays de destination</label>
-                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.pays_destination_libelle" name="pays_destination" (change)="selected()">
+                      <select class="form-control" id="type"  [(ngModel)]="dossier.pays_destination_libelle" name="pays_destination" (change)="selected()">
                               <option value="" [disabled]="true">selectionner une pays</option>
                               <option *ngFor="let Pays of pays" [selected]="Pays.libelle_pays=='tunisie'" [value]="Pays.libelle_pays">
                                 {{Pays.libelle_pays}}
@@ -72,7 +74,7 @@
   
                   <div class="form-group col-4">
                       <label>Ville de destination</label>
-                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="ville_destination" name="ville_destination">
+                      <select class="form-control" id="type"  [(ngModel)]="ville_destination" name="ville_destination">
                          <option value="" [disabled]="true">selectionner une ville</option>
                           <option *ngFor="let ville of villes"  [value]="ville.libelle_ville">
                             {{ville.libelle_ville}}
@@ -81,7 +83,7 @@
                   </div>
                   <div class="form-group col-4">
                       <label>Langues de travail</label>
-                      <input type="text"   [(ngModel)]="dossier.langues" name="langues"/>
+                      <input type="text"  class="form-control" [(ngModel)]="dossier.langues" name="langues"/>
                   </div>
               </div>
   
@@ -89,18 +91,18 @@
               <div class="form-row">
                   <div class="form-group col-4">
                       <label>Date de début</label>
-                      <input type="date"  [(ngModel)]="dossier.date_deb" name="date_deb">
+                      <input type="date" class="form-control" [(ngModel)]="dossier.date_deb" name="date_deb">
                   </div>
   
                   <div class="form-group col-4">
                       <label>Date de fin </label>
-                      <input type="date"    [(ngModel)]="dossier.date_fin" name="date_fin"
+                      <input type="date"  class="form-control"  [(ngModel)]="dossier.date_fin" name="date_fin"
                        />
                      
                   </div>
                   <div class="form-group col-4">
                       <label>Date limite de réponse</label>
-                      <input type="date"   [(ngModel)]="dossier.date_limite_reponce"  name="date_limite_reponce"
+                      <input type="date" class="form-control"  [(ngModel)]="dossier.date_limite_reponce"  name="date_limite_reponce"
                        />
                      
                   </div>

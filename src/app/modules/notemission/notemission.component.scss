@@ -10,12 +10,28 @@
 .sujet {
     text-align:right;
 }
-.form-control{
-    height: 100px;
 
-    margin-left: 1px;
+.form-control{
+    width: 300px;
+    height: 30px;
+   margin-left: 400px;
 }
 
-.tt{
+.tt{padding: 0 0 600px 0;
+  
     height: 700px;
+    width: 1000px;
+    
+}
+label,
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
 }

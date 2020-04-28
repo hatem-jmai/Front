@@ -1,3 +1,10 @@
+<div class="con">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="assets/img/logo.jpg" width="150" height="60" class="d-inline-block align-top" alt="">
+      
+        </a>
+      </nav>
 <div class="container">
     <mat-card class="card">
             
@@ -24,11 +31,14 @@
                         <mat-checkbox value="Remember me" style="font-size: 13px; margin-left: 10px;">Remember me</mat-checkbox>
                     </div>
                     <mat-card-actions class="actions">
-                        <button  type="submit" class="btn" class="btn btn-primary" >Log in</button>
-                        <a  routerLinkActive="active" routerLink="/sign-up" class="signup-image-link">Create an account</a>
+                        <button  type="submit" class="btn" class="btn btn-primary" (click)="login()" >Log in</button>
+                        
                     </mat-card-actions>
                 </mat-card-content> 
             </div>
         
     </mat-card>
+    
 </div>
+</div>
+<app-footer></app-footer>

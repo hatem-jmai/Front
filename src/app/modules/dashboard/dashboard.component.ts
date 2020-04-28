@@ -106,8 +106,8 @@ selected(){
   }
 
    suivant(){
-    this.createVisiteMession();
-    //this.router.navigateByUrl('/dashboard/noteM');
+   // this.createVisiteMession();
+    this.router.navigateByUrl('/dashboard/noteM');
   }
 
 captureScreen()  

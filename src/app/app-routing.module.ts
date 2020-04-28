@@ -9,6 +9,8 @@ import { FicheRenseignementComponent } from './modules/fiche-renseignement/fiche
 import { DefaultModule } from './layouts/default/default.module';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 import { SignInComponent } from './shared/components/sign-in/sign-in.component';
+import { RappelRapportComponent } from './modules/rappel-rapport/rappel-rapport.component';
+import { BorderouComponent } from './modules/borderou/borderou.component';
 
 
 const routes: Routes = [{
@@ -17,14 +19,16 @@ const routes: Routes = [{
   component: DefaultComponent,
   children: [
     {path: 'dossiervisite',component: DashboardComponent},
-   {path: 'noteM',component: NotemissionComponent},
-   {path: 'fiche',component: FicheRenseignementComponent},
-   {path: 'posts',component: PostsComponent},
+    {path: 'noteM',component: NotemissionComponent},
+    {path: 'fiche',component: FicheRenseignementComponent},
+    {path: 'posts',component: PostsComponent},
+    {path: 'borderau',component:BorderouComponent},
+    {path: 'rappel-rapport',component:RappelRapportComponent}
    //{path: 'borderau',component:BorderouComponent},
    //{path: 'rappel-rapport',component:RappelRapportComponent}
   ]
 },
-{ path: 'sign-up', component: SignUpComponent},
+
 { path: 'sign-in', component: SignInComponent},
 { path: '', component: SignInComponent},
 ];

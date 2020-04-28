@@ -1,126 +1,140 @@
-<div class="dossier">
- 
-   
-  <h1 class="title">بطاقة ارشادات حول مذكرة بالخارج</h1>
-  <div class="form-container2"></div>
-      <h4>الوزارة / المؤسسة أو المنشأة العمومية.I</h4>
-      <mat-form-field >
-        <input matInput type="text" value="المعهد الوطني للإحصاء" >
-      </mat-form-field>
-  </div>
-  
-  <div class="form-container2">
-    <mat-form-field >
-      <input matInput type="text" placeholder="Organisme Etranger" >
-    </mat-form-field>
+<div id = "contentToConvert">
+  <div id = "content"  #content > 
+<div class="card m-3" >
+    <img src="./assets/img/logo.jpg" class="image" >
+    
+    <div class="card-body">
+        
+      <form >
+             <div class="form-row" class="titre" >
+                <h1>بطاقة إرشادات حول مأمورية بالخارج </h1>
+             </div>
 
-    <mat-tab-group>
-      <mat-tab label="Saisir un programme">
-        <mat-form-field class="a">
-          <input matInput type="text" placeholder="Programme de Coopération" >
-        </mat-form-field>
-        <button mat-raised-button color="warn">save</button>
-      </mat-tab>
-      <mat-tab label="selectionner un programme">
-        <mat-form-field class="a">
-          <mat-select placeholder="Programme de Coopération" >
-            <mat-option value="option">Finalisée</mat-option>
-            <mat-option value="option">Encours</mat-option>
-            <mat-option value="option">Annuler</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-tab>
-    </mat-tab-group>
+                <div class="form-row">
+                  <div class="col">
+                  </div>
 
-    <mat-form-field >
-      <input matInput type="text" placeholder="Sujet" >
-    </mat-form-field>
-  </div>
-  <div class="form-container1">
+                  <div class="col" class="sujet">
+                    <h4> الوزارة / المؤسسة أو المنشأة العمومية .I </h4>
+                  </div>
+                </div>
 
-    <mat-form-field>
-      <mat-select placeholder="Pays de destination" >
-        <mat-option value="option">Finalisée</mat-option>
-        <mat-option value="option">Encours</mat-option>
-        <mat-option value="option">Annuler</mat-option>
-      </mat-select>
-    </mat-form-field>
+                <table class="table table-bordered">
+                    <tr>
+                      <h4 class="titre">   المعهد الوطني للإحصاء   </h4>
+                  </tr>
+                </table>
 
-    <mat-form-field>
-      <mat-select placeholder="Ville de destination" >
-        <mat-option value="option">Finalisée</mat-option>
-        <mat-option value="option">Encours</mat-option>
-        <mat-option value="option">Annuler</mat-option>
-      </mat-select>
-    </mat-form-field>
+                <div class="form-row">
+                    <div class="col">
+                </div>
+                <div class="col" class="sujet">
+                      <h4> معطيات حول المكلف بمأمورية بالخارج .II  </h4>
+                  </div>
 
-    <mat-form-field >
-      <input matInput type="text" placeholder="Langue de travail" >
-    </mat-form-field>
-  </div>
+                 
+                  <table class="table table-bordered" >
+                    <tr> 
+                      <td> <input type="text" class="form-control" placeholder="................"
+                        lang="ar" dir="rtl" > </td>
+                       <h4 class="sujet">    : الإسم و اللقب   </h4>
+                  </tr>
+                  <tr>
+                    <td> <input type="text" class="form-control" placeholder="................"
+                      lang="ar" dir="rtl" > </td>
+                    <h4 class="sujet"> :الرتبة / الخطة الوظيفية</h4>
+                  </tr>
+                </table>
 
-  <div class="form-container1">
-    <mat-form-field>
-      <input matInput  placeholder="date début" >
-      <mat-datepicker-toggle > </mat-datepicker-toggle>
-      <mat-datepicker ></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput  placeholder="date fin">
-      <mat-datepicker-toggle > </mat-datepicker-toggle>
-      <mat-datepicker ></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="date" placeholder="date limite de réponse" >
-      <mat-datepicker-toggle > </mat-datepicker-toggle>
-      <mat-datepicker ></mat-datepicker>
-    </mat-form-field>
-
-  </div>
-  <div class="form-container2">
-  <mat-tab-group>
-    <mat-tab label="Nombre de participants">
-        <mat-form-field style="width: 100px; float: left;margin-left: 50px;">
-          <input matInput min="0" value="0" type="number" placeholder="INS" >
-        </mat-form-field>
-        <mat-form-field style="width: 100px;margin-left: 50px;">
-          <input matInput min="0" value="0" type="number" placeholder="SP" >
-        </mat-form-field>
-    </mat-tab>
-
-    <mat-tab label="Prise en charge">
-      <mat-card>
-        <mat-card-title style="color: darkslategrey; font-size: small;">Transport :</mat-card-title>
-        <mat-checkbox value="Organisme Etranger" style="font-size: 15px;">Organisme Etranger</mat-checkbox>
-        <mat-checkbox value="INS" style="font-size: 15px;margin-left: 50px;">INS</mat-checkbox>
-      </mat-card>
-      <mat-card>
-        <mat-card-title style="color: darkslategrey; font-size: small;">Hébergement :</mat-card-title>
-        <mat-checkbox value="Organisme Etranger" style="font-size: 15px;">Organisme Etranger</mat-checkbox>
-        <mat-checkbox value="INS" style="font-size: 15px;margin-left: 50px;">INS</mat-checkbox>
-      </mat-card>
-    </mat-tab>
-  </mat-tab-group>
+              </div>
+                
+                <div class="col" class="sujet">
+                  <h4>  معطيات عامة حول المأموية .III  </h4>
+              </div>
+               
 
 
-  <div>
-    <mat-card style="float: left;width: 300px;">
-      <mat-card-title style="color: darkslategrey; font-size:medium;">La date d'envoi des documents de visite au ministère :</mat-card-title>
-      <mat-form-field>
-        <input matInput type="date" >
-        <mat-datepicker-toggle > </mat-datepicker-toggle>
-        <mat-datepicker ></mat-datepicker>
-      </mat-form-field>
-    </mat-card>
-    <mat-card style="margin-left: 150px;float: left;">
-      <mat-card-title style="color: darkslategrey; font-size: medium;">La date d'acceptation de visite :</mat-card-title>
-      <mat-form-field>
-        <input matInput type="date" >
-        <mat-datepicker-toggle > </mat-datepicker-toggle>
-        <mat-datepicker ></mat-datepicker>
-      </mat-form-field>
-    </mat-card>
-  </div>
+                <table   class="table table-bordered">
+                    <tr> 
+                      <td>
+                     <label class="label"> (أيام)</label>
+                        <input type="number" class="number">  
+                      </td>
+                      <td> <input type="text" class="c"
+                        lang="ar" dir="rtl" > </td>
+                       
+                       <h4 class="sujet" >   : الوجهة المقصودة والمدة   </h4>
+                  </tr>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td>
+                   <h4 class="sujet" > 
+                     :هل يتحمل البلد أو الهيكل المقصود
+                   </h4>
+                  </td>
+                 </tr>
+
+                 <tr>   
+                  <td>  <input type="checkbox" class="check">  لا</td>
+                  <td>  <input type="checkbox" class="check"> نعم</td>
+                 <td><h4 class="sujet">  مصاريف النقل </h4> 
+                 </td> 
+                </tr>
+
+                <tr>
+                  <td>  <input type="checkbox" class="check">  لا</td>
+                  <td>  <input type="checkbox" class="check"> نعم</td>
+                 <td> <h4 class="sujet" >      مصاريف الإقامة  </h4> 
+                 </td> 
+                </tr>
+              </table>
+
+              <table class="table table-bordered">
+                <tr>
+                  
+                  <td> <input  type="text" class="d"  lang="ar" dir="rtl" ></td>
+                
+                  <h4  >بيان فحوى المصاريف الأخرى والجهة المتحملة لها </h4>
+                  
+                </tr>
+              </table>
+             
+
+              <div class="col" class="sujet">
+                <h4>  معطيات خصوصية حول المأمورية  .IV   </h4>
+            </div>
+            <div class="col"  class="sujet" >
+             <input class="tabrir" type="text" lang="ar" dir="rtl" > 
+            </div>
+
+            
+              
+            <div class="note">
+            <label >
+  تعمر هذه البطاقة بكامل الدقة وجوبا وترفق وجوبا لإذن المأمورية علما وأن نقص تعميرها يترتب عنه عدم الإنجاز</label>
+            
+  <label> (1)</label> 
+
+  <label>
+      يتم إرجاع مصاريف المأمورية في صورة ما إذا اتضح تحملها من قبل البلد المقصود بصفة غير منتظرة
+  </label>
+           <label>(2)</label>
+          </div>
+          
+           <div class="text-center">
+<input type = "button" class="btn btn-primary mr-1" 
+value = "telecharger pdf"  (click) = "captureScreen ()"/>
+            <button class="btn btn-primary mr-1"  (click)="suivant()">Suivant</button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+          
+        </div>
+
+                
+                </form>
+
+
+        </div>
+</div>
+</div>
 </div>
