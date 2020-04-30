@@ -16,6 +16,7 @@ export class Dossier{
     frais_residence:boolean;
     pays_destination_libelle:string;
     organisme_etranger_libelle:string;
+    programme_libelle:string;
     constructor(){}
     
 }

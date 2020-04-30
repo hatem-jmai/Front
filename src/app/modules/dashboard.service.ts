@@ -24,7 +24,9 @@ export class DashboardService {
   getAllOrganismesEtrangers():Observable<object>{
     return this.http.get('http://localhost:8000/organismeEtranger');
   }
-
+  getAllProgrammes():Observable<object>{
+    return this.http.get('http://localhost:8000/programmeCooperation/programmes');
+  }
   
 
 

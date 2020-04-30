@@ -25,11 +25,10 @@ dossier:Dossier;
 mission:Dossier;
 pays=[];
 organismes=[];
-//pays_destination:string='';
+programmes=[];
 villes=[];
 Destination:Pays_destination;
 ville_destination:string='';
-//organisme_etranger:string='selectionner une statut';
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
@@ -88,6 +87,17 @@ selected(){
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
           this.organismes.push(data[key]);
+        }
+      }
+    });
+  }
+  getAllProgrammes(){
+    this.Myservice.getAllProgrammes().subscribe(data=>{
+      console.log(data),
+      error => console.log(error);
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.programmes.push(data[key]);
         }
       }
     });

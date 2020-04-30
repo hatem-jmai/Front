@@ -49,7 +49,12 @@
               <div class="form-row">
                   <div class="form-group col">
                       <label>Programmme de coopération</label>
-                      <input type="text" class="form-control"/>
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.programme_libelle" name="programme_cooperation">
+                        <option value="" [disabled]="true">selectionner un programme</option>
+                                  <option *ngFor="let prog of programmes"  [value]="prog.libelle_prog">
+                                    {{prog.libelle_prog}}
+                                  </option>
+                      </select>
                   </div>  
               </div>
               
