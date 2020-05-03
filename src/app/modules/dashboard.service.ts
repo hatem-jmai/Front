@@ -27,6 +27,10 @@ export class DashboardService {
   getAllProgrammes():Observable<object>{
     return this.http.get('http://localhost:8000/programmeCooperation/programmes');
   }
+  getAllCadres():Observable<object>{
+    return this.http.get('http://localhost:8000/cadreINS');
+  }
+
   
 
 

@@ -3,7 +3,7 @@
   <div class="card m-3">
       <h5 class="card-header">Dossier de Visite à l'étranger</h5>
   
-      <div class="card-body">
+      <div class="card-body" id="dossier">
           <form>
               <div class="form-row">
                   <div class="form-group col-2">
@@ -25,7 +25,7 @@
                   <div class="form-group col-4">
                       <label>Statut</label>
                       <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.statut" name="statut">
-                        <option  [disabled]="true">selectionner une statut</option>
+                        <option value="" [disabled]="true">selectionner une statut</option>
                               <option  value="En-cours">En-cours</option>
                               <option  value="Finalise">Finalisé</option>
                               <option  value="Annule">Annulé</option>
@@ -70,8 +70,8 @@
                   <div class="form-group col-4">
                       <label>Pays de destination</label>
                       <select class="form-control" id="type"  [(ngModel)]="dossier.pays_destination_libelle" name="pays_destination" (change)="selected()">
-                              <option value="" [disabled]="true">selectionner une pays</option>
-                              <option *ngFor="let Pays of pays" [selected]="Pays.libelle_pays=='tunisie'" [value]="Pays.libelle_pays">
+                              <option value="" [disabled]="true" selected="selected" >selectionner une pays</option>
+                              <option *ngFor="let Pays of pays" [value]="Pays.libelle_pays">
                                 {{Pays.libelle_pays}}
                               </option>
                         </select>
@@ -253,7 +253,7 @@
   
                 
               <div class="text-center">
-                <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen ()"/>
+                <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen()"/>
                   <button class="btn btn-primary mr-1" (click)="suivant()">Suivant</button>
                   <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
                 

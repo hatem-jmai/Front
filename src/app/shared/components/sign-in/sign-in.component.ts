@@ -15,6 +15,7 @@ checkbox:boolean;
 
   ngOnInit() {
     this.username=localStorage.getItem('username');
+    if(this.username != null)
     this.checkbox=true;
   }
 

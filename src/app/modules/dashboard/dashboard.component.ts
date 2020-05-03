@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import * as jspdf from 'jspdf';
 import html2canvas from  'html2canvas' ;
+import * as html2pdf from 'html2pdf.js';
 import { Dossier } from 'src/app/entities/dossier';
 import { DatePipe, formatDate } from '@angular/common';
 import { Pays_destination } from 'src/app/entities/pays_destination';
@@ -21,11 +22,12 @@ export interface PeriodicElement {
 })
 
 export class DashboardComponent implements OnInit {
-dossier:Dossier;
+dossier:Dossier= new Dossier();
 mission:Dossier;
 pays=[];
 organismes=[];
 programmes=[];
+cadres=[];
 villes=[];
 Destination:Pays_destination;
 ville_destination:string='';
@@ -34,7 +36,11 @@ ville_destination:string='';
   ngOnInit() {
     this.getAllPays();
     this.getAllOrganismesEtrangers();
-    this.dossier = new Dossier();
+    this.getAllCadres();
+    this.dossier.pays_destination_libelle="";
+    this.dossier.statut="";
+    this.dossier.organisme_etranger_libelle="";
+    this.dossier.programme_libelle="";
     this.dossier.annee=2020;
     this.dossier.type_visite="mission";
     
@@ -102,6 +108,17 @@ selected(){
       }
     });
   }
+  getAllCadres(){
+    this.Myservice.getAllCadres().subscribe(data=>{
+      console.log(data),
+      error => console.log(error);
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.cadres.push(data[key]);
+        }
+      }
+    });
+  }
   createVisiteMession(){
     console.log(this.dossier);
     
@@ -120,22 +137,37 @@ selected(){
     this.router.navigateByUrl('/dashboard/noteM');
   }
 
-captureScreen()  
-{  console.log("ahla")
-  var data = document.getElementById('contentToConvert');  
-  html2canvas(data).then(canvas => {  
-    // Few necessary setting options  
-    var imgWidth = 208;   
-    var pageHeight = 295;    
-    var imgHeight = canvas.height * imgWidth / canvas.width;  
-    var heightLeft = imgHeight;  
+  captureScreen()  
+  {  console.log("ahla")
+    var data = document.getElementById('contentToConvert');  
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 208;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
 
-    const contentDataURL = canvas.toDataURL('image/png')  
-    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-    var position = 0;  
-    pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-    pdf.save('MYPdf.pdf'); // Generated PDF   
-  });  
-}  
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('MYPdf.pdf'); // Generated PDF   
+    });  
+  }  
+
+  download(){
+    const options= {
+      name:'dossierVisite.pdf',
+      image: { type: 'jpeg'},
+      html2canvas: {},
+      jsPDF:{orientation:'landscape'}
+    }
+
+    const element:Element = document.getElementById('dossier');
+    html2pdf()
+        .from(element)
+        .set(options)
+        .save()
+  }
 
 }
