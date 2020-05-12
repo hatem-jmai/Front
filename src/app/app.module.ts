@@ -11,6 +11,8 @@ import { NotemissionComponent } from './modules/notemission/notemission.componen
 import { HttpClientModule } from '@angular/common/http';
 import { RappelRapportComponent } from './modules/rappel-rapport/rappel-rapport.component';
 import { BorderouComponent } from './modules/borderou/borderou.component';
+import { ListeDossiersComponent } from './modules/liste-dossiers/liste-dossiers.component';
+import { MatFormFieldModule, MatIconModule, MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
 
 
 
@@ -22,6 +24,7 @@ import { BorderouComponent } from './modules/borderou/borderou.component';
     NotemissionComponent,
     RappelRapportComponent,
     BorderouComponent,
+    ListeDossiersComponent,
 
     
   ],
@@ -33,8 +36,11 @@ import { BorderouComponent } from './modules/borderou/borderou.component';
     DefaultModule,
     ReactiveFormsModule,
     FormsModule,
-
-
+    MatFormFieldModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
     
     
   ],

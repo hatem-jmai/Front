@@ -5,7 +5,7 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonToggleModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatToolbarModule, MatTabsModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonToggleModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatToolbarModule, MatTabsModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, MatIconModule, MatSortModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
@@ -27,7 +27,6 @@ import { FicheRenseignementComponent } from 'src/app/modules/fiche-renseignement
     FlexLayoutModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTableModule,
     ReactiveFormsModule,
     FormsModule,
     MatButtonToggleModule,
@@ -41,7 +40,10 @@ import { FicheRenseignementComponent } from 'src/app/modules/fiche-renseignement
     MatCheckboxModule,
     MatTableModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [
     DashboardService

@@ -11,6 +11,7 @@ import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 import { SignInComponent } from './shared/components/sign-in/sign-in.component';
 import { RappelRapportComponent } from './modules/rappel-rapport/rappel-rapport.component';
 import { BorderouComponent } from './modules/borderou/borderou.component';
+import { ListeDossiersComponent } from './modules/liste-dossiers/liste-dossiers.component';
 
 
 const routes: Routes = [{
@@ -23,9 +24,10 @@ const routes: Routes = [{
     {path: 'fiche',component: FicheRenseignementComponent},
     {path: 'posts',component: PostsComponent},
     {path: 'borderau',component:BorderouComponent},
-    {path: 'rappel-rapport',component:RappelRapportComponent}
+    {path: 'rappel-rapport',component:RappelRapportComponent},
    //{path: 'borderau',component:BorderouComponent},
    //{path: 'rappel-rapport',component:RappelRapportComponent}
+   {path: 'liste-dossierVisite',component:ListeDossiersComponent}
   ]
 },
 

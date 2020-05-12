@@ -39,12 +39,18 @@
                  
                   <table class="table table-bordered" >
                     <tr> 
-                      <td> <input type="text" class="form-control" placeholder="................"
-                        lang="ar" dir="rtl" > </td>
+                      <td>
+                        <select class="form-control col-sm-8"   [(ngModel)]="id_participant" name="participant" (change)="grade_fonction()">
+                          <option value="" [disabled]="true">selectionner un participant</option>
+                          <option *ngFor="let cadre of cadres"  [value]="cadre.id">
+                            {{cadre.prenom}} {{cadre.nom}}
+                          </option> 
+                        </select>
+                      </td>
                        <h4 class="sujet">    : الإسم و اللقب   </h4>
                   </tr>
                   <tr>
-                    <td> <input type="text" class="form-control" placeholder="................"
+                    <td> <input type="text" class="form-control"  [value]="gradeFonction"
                       lang="ar" dir="rtl" > </td>
                     <h4 class="sujet"> : الرتبة <span>/ </span> الخطة <span style="margin: 3px;"></span>الوظيفية</h4>
                   </tr>
@@ -62,9 +68,9 @@
                     <tr> 
                       <td>
                      <label class="label"> (أيام)</label>
-                        <input type="number" class="number">  
+                        <input type="number" class="number" [(ngModel)]="diffInDays" name="duree">  
                       </td>
-                      <td> <input type="text" class="c"
+                      <td> <input type="text" class="c" [(ngModel)]="dossier.pays_destination_libelle" name="pays_destination"
                         lang="ar" dir="rtl" > </td>
                        
                        <h4 class="sujet" >   : الوجهة المقصودة <span style="margin: 3px;"></span>والمدة   </h4>
@@ -80,15 +86,15 @@
                  </tr>
 
                  <tr>   
-                  <td>  <input type="checkbox" class="check">  لا</td>
-                  <td>  <input type="checkbox" class="check"> نعم</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_no" name="trans_no">  لا</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_yes" name="trans_yes"> نعم</td>
                  <td><h4 class="sujet">  مصاريف <span style="margin: 3px;"></span>النقل </h4> 
                  </td> 
                 </tr>
 
                 <tr>
-                  <td>  <input type="checkbox" class="check">  لا</td>
-                  <td>  <input type="checkbox" class="check"> نعم</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_no" name="res_no">  لا</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_yes" name="res_yes"> نعم</td>
                  <td> <h4 class="sujet" >      مصاريف <span style="margin: 3px;"></span>الإقامة  </h4> 
                  </td> 
                 </tr>

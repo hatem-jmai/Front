@@ -12,16 +12,21 @@
                       [(ngModel)]="dossier.date_arrive_invitation" >
                   </div>
   
-                  <div class="form-group col-3">
+                  <div class="form-group col-4">
                       <label>Direction Centrale</label>
-                      <input type="text"  class="form-control"
-                       />
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.direction_centrale" name="direction">
+                        <option value="" [disabled]="true">selectionner une direction</option>
+                        <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                          {{direction.libelle_direction}}
+                        </option> 
+                      </select>
                      
                   </div>
-                  <div class="form-group col-3">
+                  <div class="form-group col-2">
                       <label>Nature</label>
                       <input type="text" class="form-control" [(ngModel)]="dossier.nature" name="nature"/>
                   </div>
+                  
                   <div class="form-group col-4">
                       <label>Statut</label>
                       <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.statut" name="statut">
@@ -128,16 +133,15 @@
                   <tbody>
                     <tr>
                       <th>INS</th>
-                      
-                      <td> <input type="number" [(ngModel)]="dossier.nbr_participant_ins" name="nbr_participant_ins">&nbsp; participants </td>
-                      <td> Transport</td>
+                      <td> <input type="number" class="numberparticipant" [(ngModel)]="dossier.nbr_participant_ins" name="nbr_participant_ins">&nbsp; participants </td>
+                      <td>Transport</td>
                       <td><input type="checkbox" class="check" [(ngModel)]="dossier.frais_transport" name="frais_transport"></td>
-                      <td><input type="checkbox" ></td>
+                      <td><input type="checkbox"  ></td>
                     </tr>
                     <tr>
                       <th>SP</th>
                       <td><input type="number" class="numberparticipant" [(ngModel)]="dossier.nbr_participant_sp" name="nbr_participant_sp">&nbsp; participants</td>
-                      <td>Hébergement</td>
+                      <td>Résidence</td>
                       <td><input type="checkbox" class="check" [(ngModel)]="dossier.frais_residence" name="frais_residence"></td>
                       <td><input type="checkbox" ></td>
                     </tr>
@@ -167,49 +171,119 @@
   
                   <tbody>
                     <tr>
-                      <th><input type="text" class="form-control"></th>
+                      <td>
+                        <select class="form-control col-sm-8" id="1"  name="direction_centrale1" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
+                      <td><input type="text" class="form-control" name="fonction1" [(ngModel)]="fonction1" [value]="cadreINS1[1]" ></td>
+                      <td><input type="text" class="form-control" name="grade1" [(ngModel)]="grade1" [value]="cadreINS1[2]" ></td>
+                      <td>
+                        <select class="form-control" id="1"   name="cadreINS1" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option  *ngFor="let cadre of cadre1"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                    </td>
                     </tr>
                     <tr>
-                      <th><input type="text" class="form-control"></th>
+                      <td>
+                        <select class="form-control col-sm-8" id="2"   name="direction_centrale2" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
+                      <td><input type="text" class="form-control"  name="fonction2" [(ngModel)]="fonction2" [value]="cadreINS2[1]"></td>
+                      <td><input type="text" class="form-control" name="grade2" [(ngModel)]="grade2" [value]="cadreINS2[2]"></td>
+                      <td>
+                        <select class="form-control" id="2"   name="cadreINS2" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre2"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
                     </tr>
                     <tr>
-                      <th><input type="text" class="form-control"></th>
+                      <td>
+                        <select class="form-control col-sm-8" id="3"   name="direction_centrale3" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
+                      <td><input type="text" class="form-control" name="fonction3" [(ngModel)]="fonction3" [value]="cadreINS3[1]"></td>
+                      <td><input type="text" class="form-control" name="grade3" [(ngModel)]="grade3" [value]="cadreINS3[2]"></td>
+                      <td>
+                        <select class="form-control" id="3"   name="cadreINS3" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre3"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
                     </tr>
                     <tr>
-                      <th><input type="text" class="form-control"></th>
+                      <td>
+                        <select class="form-control col-sm-8" id="4"   name="direction_centrale4" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
+                      <td><input type="text" class="form-control" name="fonction4" [(ngModel)]="fonction4" [value]="cadreINS4[1]"></td>
+                      <td><input type="text" class="form-control" name="grade4" [(ngModel)]="grade4" [value]="cadreINS4[2]"></td>
+                      <td>
+                        <select class="form-control" id="4"   name="cadreINS4" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre4"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
                     </tr>
                     <tr>
-                      <th><input type="text" class="form-control"></th>
+                      <td>
+                        <select class="form-control col-sm-8" id="5"   name="direction_centrale5" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
                       <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
+                      <td><input type="text" class="form-control" name="fonction5" [(ngModel)]="fonction5" [value]="cadreINS5[1]"></td>
+                      <td><input type="text" class="form-control" name="grade5" [(ngModel)]="grade5" [value]="cadreINS5[2]"></td>
+                      <td>
+                        <select class="form-control" id="5"   name="cadreINS5" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre5"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
                     </tr>
                    
                     
@@ -247,21 +321,13 @@
                   </tbody>
                 </table>
               </div>
-  
-  
-  
-  
-                
-              <div class="text-center">
-                <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen()"/>
-                  <button class="btn btn-primary mr-1" (click)="suivant()">Suivant</button>
-                  <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-                
-                  
-  
-                  
-              </div>
           </form>
+          <div class="text-center">
+            <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen()"/>
+              <input class="btn btn-primary mr-1" type="submit" value = "Suivant" (click)="suivant()"/>
+              <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+              <button class="btn btn-secondary"  (click)="Next()">next</button>
+          </div>
       </div>
   </div>
   

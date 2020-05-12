@@ -9,6 +9,7 @@ import * as html2pdf from 'html2pdf.js';
 import { Dossier } from 'src/app/entities/dossier';
 import { DatePipe, formatDate } from '@angular/common';
 import { Pays_destination } from 'src/app/entities/pays_destination';
+import { Direction_centrale } from 'src/app/entities/direction_centrale';
 
 export interface PeriodicElement {
  
@@ -25,39 +26,57 @@ export class DashboardComponent implements OnInit {
 dossier:Dossier= new Dossier();
 mission:Dossier;
 pays=[];
+Allcadres=[];
+directions=[];
 organismes=[];
 programmes=[];
-cadres=[];
+cadre1=[];
+cadre2=[];
+cadre3=[];
+cadre4=[];
+cadre5=[];
 villes=[];
 Destination:Pays_destination;
+Direction:Direction_centrale;
 ville_destination:string='';
+cadreINS1=[];
+cadreINS2=[];
+cadreINS3=[];
+cadreINS4=[];
+cadreINS5=[];
+//idSelect=0;
+id="0";
+fonction1:string;
+fonction2:string;
+grade1:string;
+grade2:string;
+dossier1:Dossier;
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
+     
+    this.getAllDirections();
     this.getAllPays();
     this.getAllOrganismesEtrangers();
-    this.getAllCadres();
+    this.getAllProgrammes();
+    this.dossier.direction_centrale="";
     this.dossier.pays_destination_libelle="";
     this.dossier.statut="";
     this.dossier.organisme_etranger_libelle="";
     this.dossier.programme_libelle="";
     this.dossier.annee=2020;
     this.dossier.type_visite="mission";
-    
+    this.dossier.frais_transport=false;
+    this.dossier.frais_residence=false;
+    this.fonction1="";
+    this.fonction2="";
+    this.grade1="";
+    this.grade2="";
+    console.log(this.cadreINS5.length);
   }
-/*
-  changerFormatDate(){
-    
-    this.dateArriveVisite=formatDate(this.dossier.date_arrive_visite, 'dd-MM-yyyy','en-US');
-    this.dateDeb=formatDate(this.dossier.date_deb, 'dd-MM-yyyy','en-US');
-    this.dateFin=formatDate(this.dossier.date_fin, 'dd-MM-yyyy','en-US');
-    this.dateLimiteReponce=formatDate(this.dossier.date_limite_reponce, 'dd-MM-yyyy','en-US');
-
-    var momentVariable = moment(this.dateArriveVisite, 'MM-DD-YYYY');  
-    var stringvalue = momentVariable.format('YYYY-MM-DD');  
-
+  Next(){
+    this.router.navigateByUrl('/dashboard/noteM');
   }
-*/
 selected(){
   console.log(this.dossier.pays_destination_libelle);
   this.Destination=new Pays_destination();
@@ -71,6 +90,87 @@ selected(){
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         this.villes.push(data[key]);
+      }
+    }
+  });
+}
+getCadreParDirection(event : any){
+  this.id=event.target.id;
+  let cadres=[];
+  this.Direction=new Direction_centrale();
+  this.Direction.libelle_direction=event.target.value;
+  this.Myservice.getCadreParDirection(this.Direction).subscribe(data=>{
+    console.log(data),
+    error => console.log(error);
+    if (cadres.length> 0) {
+      cadres.splice(0,cadres.length);
+    };
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+          cadres.push(data[key]);
+      }
+    }
+    switch(this.id){
+      case "1" : this.cadre1 = cadres;
+                 break;
+      case "2" : this.cadre2 = cadres;
+                 break;
+      case "3" : this.cadre3 = cadres;
+                 break;
+      case "4" : this.cadre4 = cadres;
+                 break;
+      case "5" : this.cadre5 = cadres;
+                 break;           
+    } 
+  });
+}
+getCadre(event: any){
+  let id = event.target.id;
+  let cadre = [];
+  let cadreins = [];
+  //if(id == this.id){
+    switch(id){
+      case "1" : cadreins = this.cadre1;
+                 break;
+      case "2" : cadreins = this.cadre2;
+                 break;
+      case "3" : cadreins = this.cadre3;
+                 break;
+      case "4" : cadreins = this.cadre4;
+                 break;
+      case "5" : cadreins = this.cadre5;
+                 break;           
+    } 
+    for (let i=0;i<cadreins.length;i++) {
+      if (cadreins[i].id == event.target.value) {
+          cadre.push(cadreins[i].id);
+          cadre.push(cadreins[i].fonction);
+          cadre.push(cadreins[i].grade);
+          switch(id){
+            case "1" : this.cadreINS1 = cadre;
+                       break;
+            case "2" : this.cadreINS2 = cadre;
+                       break;
+            case "3" : this.cadreINS3 = cadre;
+                       break;
+            case "4" : this.cadreINS4 = cadre;
+                       break;
+            case "5" : this.cadreINS5 = cadre;
+                       break;           
+          } 
+         //this.idSelect = cadreins[i].id;
+          //console.log(this.cadreINS5[0]);
+      }
+    } 
+  //}
+}
+getAllDirections(){
+  this.Myservice.getAllDirections().subscribe(data=>{
+    console.log(data),
+    error => console.log(error);
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        this.directions.push(data[key]);
       }
     }
   });
@@ -114,26 +214,34 @@ selected(){
       error => console.log(error);
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
-          this.cadres.push(data[key]);
+          this.Allcadres.push(data[key]);
         }
       }
     });
   }
-  createVisiteMession(){
+  remplirCadre_id(cadreINS :Array<any>,cadreDossier :Array<any>){
+    if(cadreINS.length>0)
+      cadreDossier.push(cadreINS[0]) ;   
+  }
+  createVisiteMission(){
     console.log(this.dossier);
-    
+    this.remplirCadre_id(this.cadreINS1,this.dossier.cadre_id);
+    this.remplirCadre_id(this.cadreINS2,this.dossier.cadre_id);
+    this.remplirCadre_id(this.cadreINS3,this.dossier.cadre_id);
+    this.remplirCadre_id(this.cadreINS4,this.dossier.cadre_id);
+    this.remplirCadre_id(this.cadreINS5,this.dossier.cadre_id);
+    console.log(this.dossier.cadre_id);  
     this.Myservice.createDossier(this.dossier).subscribe((data:any) =>{
       console.log(data),
       error => console.log(error),
-      this.mission = new Dossier();
-      this.mission=data;
-      console.log(this.mission);
+      this.Myservice.setDossier(this.dossier);
+
     });
     //this.registerForm.reset();
   }
-
+  
    suivant(){
-   // this.createVisiteMession();
+   this.createVisiteMission();
     this.router.navigateByUrl('/dashboard/noteM');
   }
 

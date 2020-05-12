@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable} from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { Dossier } from '../entities/dossier';
 
 import { HttpClient } from '@angular/common/http';
@@ -8,9 +9,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DashboardService {
-
-  constructor(private http:HttpClient) { }
-
+private dossier = new BehaviorSubject<Dossier>(new Dossier());
+myDossier=this.dossier.asObservable();
+  constructor(private http:HttpClient) {};
+  setDossier(dossier:Dossier){
+    this.dossier.next(dossier);
+  }
+  
   createDossier(dossier: Dossier):Observable<object>{
     return this.http.post('http://localhost:8000/dossiervisite/new',dossier);
   }
@@ -28,7 +33,22 @@ export class DashboardService {
     return this.http.get('http://localhost:8000/programmeCooperation/programmes');
   }
   getAllCadres():Observable<object>{
-    return this.http.get('http://localhost:8000/cadreINS');
+    return this.http.get('http://localhost:8000/cadreINS/cadres');
+  }
+  getCadreParDirection(Direction:object):Observable<object>{
+    return this.http.post('http://localhost:8000/cadreINS/parDirection',Direction);
+  }
+  getAllDirections():Observable<object>{
+    return this.http.get('http://localhost:8000/directionCentrale');
+  }
+  getCadre(id:any):Observable<object>{
+    return this.http.get('http://localhost:8000/cadreINS/'+id);
+  }
+  getPays(id:any):Observable<object>{
+    return this.http.get('http://localhost:8000/paysdestination/'+id);
+  }
+  getDossierVisite():Observable<any>{
+    return this.http.get('http://localhost:8000/dossiervisite');
   }
 
   

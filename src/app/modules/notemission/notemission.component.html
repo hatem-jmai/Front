@@ -9,20 +9,20 @@
               
           <table class="table table-bordered" >
             <tr> 
-              <td> <input type="text" class="form-control" placeholder="................"
-                lang="ar" dir="rtl" > </td>
+              <td> <input type="text" [(ngModel)]="sujet" name="sujet" placeholder="................"
+                lang="ar" dir="rtl" /> </td>
                <h4 class="sujet">    الموضوع   </h4>
           </tr>
           <tr>
-            <td> <input type="text" class="form-control" placeholder="................"
+            <td> <input type="text" [(ngModel)]="documents" name="documents" placeholder="................"
               lang="ar" dir="rtl" > </td>
             <h4 class="sujet"> المرفقات</h4>
           </tr>
         </table>
 
                 <div class="form-row" class="tt">
-                      <textarea lang="ar" 
-                       dir="rtl" formControlName="title" class="tt"  >
+                      <textarea lang="ar" [(ngModel)]="content" name="content"
+                       dir="rtl"  class="tt"  >
                        </textarea>
                   
               </div>
