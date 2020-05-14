@@ -60,7 +60,7 @@ dossier1:Dossier;
       this.getAllOrganismesEtrangers();
       this.getAllProgrammes();
       this.getDossier();
-      this.selected();
+      
     }
     
     else{
@@ -280,7 +280,12 @@ getAllDirections(){
       }
       console.log(this.dossier.statut);
     });
+    this.selected();
   }
+  remplirTableau(){
+    
+  }
+
   captureScreen()  
   {  
     var data = document.getElementById('contentToConvert');  

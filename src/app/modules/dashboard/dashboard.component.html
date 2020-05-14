@@ -172,7 +172,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <select class="form-control col-sm-8" id="1"  name="direction_centrale1" (change)="getCadreParDirection($event)">
+                        <select class="form-control col-sm-8" id="1" [(ngModel)]="direction1" name="direction1" name="direction_centrale1" (change)="getCadreParDirection($event)">
                           <option value="" [disabled]="true">selectionner une direction</option>
                           <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
                             {{direction.libelle_direction}}
