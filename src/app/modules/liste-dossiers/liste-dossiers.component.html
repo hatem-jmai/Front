@@ -32,7 +32,10 @@
                     <td>{{ dossier.sujet }}</td>
                     <td>{{ dossier.date_deb }}</td>
                     <td>{{ dossier.date_fin}}</td>
-                    <td><i class="material-icons">edit</i><mat-icon>delete</mat-icon></td>
+                    <td>
+                        <button (click)="edit($event)" [value]="dossier.id" ><mat-icon mat-icon-button>launch</mat-icon></button>
+                        <button (click)="delete()"><mat-icon mat-icon-button color="warn">delete</mat-icon></button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

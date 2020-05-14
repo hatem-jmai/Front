@@ -54,12 +54,17 @@ dossier1:Dossier;
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
-     
-    this.getAllDirections();
-    this.getAllPays();
-    this.getAllOrganismesEtrangers();
-    this.getAllProgrammes();
-    this.dossier.direction_centrale="";
+    if(this.Myservice.id_dossier != null){
+      this.getAllDirections();
+      this.getAllPays();
+      this.getAllOrganismesEtrangers();
+      this.getAllProgrammes();
+      this.getDossier();
+      this.selected();
+    }
+    
+    else{
+      this.dossier.direction_centrale="";
     this.dossier.pays_destination_libelle="";
     this.dossier.statut="";
     this.dossier.organisme_etranger_libelle="";
@@ -72,7 +77,14 @@ dossier1:Dossier;
     this.fonction2="";
     this.grade1="";
     this.grade2="";
-    console.log(this.cadreINS5.length);
+    this.getAllDirections();
+    this.getAllPays();
+    this.getAllOrganismesEtrangers();
+    this.getAllProgrammes();
+    }
+    
+    
+    
   }
   Next(){
     this.router.navigateByUrl('/dashboard/noteM');
@@ -244,9 +256,33 @@ getAllDirections(){
    this.createVisiteMission();
     this.router.navigateByUrl('/dashboard/noteM');
   }
-
+  getDossier(){
+    this.Myservice.getDossier(this.Myservice.id_dossier).subscribe(data=>{
+      console.log(data),
+      error => console.log(error);
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.dossier.statut=data[key].statut;
+          this.dossier.sujet=data[key].sujet;
+          this.dossier.pays_destination_libelle=data[key].pays_destination_id;
+          this.dossier.nature=data[key].nature;
+          this.dossier.organisme_etranger_libelle=data[key].organisme_etranger_id;
+          this.dossier.nbr_participant_sp=data[key].nb_participant_sp;
+          this.dossier.nbr_participant_ins=data[key].nb_participant_ins;
+          this.dossier.langues=data[key].langues;
+          this.dossier.frais_transport=data[key].frais_transport;
+          this.dossier.frais_residence=data[key].frais_residence;
+          this.dossier.date_limite_reponce=data[key].date_limite_reponce;
+          this.dossier.date_deb=data[key].date_deb;
+          this.dossier.date_fin=data[key].date_fin;
+          this.dossier.date_arrive_invitation=data[key].date_arrive_visite;
+        }
+      }
+      console.log(this.dossier.statut);
+    });
+  }
   captureScreen()  
-  {  console.log("ahla")
+  {  
     var data = document.getElementById('contentToConvert');  
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  

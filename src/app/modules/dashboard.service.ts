@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class DashboardService {
 private dossier = new BehaviorSubject<Dossier>(new Dossier());
 myDossier=this.dossier.asObservable();
+id_dossier:any;
   constructor(private http:HttpClient) {};
   setDossier(dossier:Dossier){
     this.dossier.next(dossier);
@@ -49,6 +50,9 @@ myDossier=this.dossier.asObservable();
   }
   getDossierVisite():Observable<any>{
     return this.http.get('http://localhost:8000/dossiervisite');
+  }
+  getDossier(id:any):Observable<any>{
+    return this.http.get('http://localhost:8000/dossiervisite/'+id);
   }
 
   

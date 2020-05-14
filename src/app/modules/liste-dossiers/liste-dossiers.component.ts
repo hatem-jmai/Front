@@ -9,7 +9,7 @@ import { DashboardService } from '../dashboard.service';
 })
 export class ListeDossiersComponent implements OnInit {
   items=[];
-
+  id:number;
   pageTitle = 'Dynamic! Game List';
     imageWidth = 45;
     imageMargin = 1;
@@ -59,8 +59,10 @@ export class ListeDossiersComponent implements OnInit {
         dossier.sujet.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
  
-    toggleImage(): void {
-        this.showImage = !this.showImage;
+    edit(element:any){
+      console.log(element.target.value);
+      this.Myservice.id_dossier=element.target.value;
+      this.router.navigateByUrl('/dashboard/dossiervisite');
     }
 
 }
