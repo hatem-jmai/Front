@@ -1,0 +1,77 @@
+<div class='card'>
+    <div class='card-header'>
+        {{pageTitle}}
+    </div>
+    <div class='card-body' >
+        <div class="row">
+            <div class="col-3">   
+        
+         <input [(ngModel)]="listFilter" type="text"  class="form-control" placeholder="Type to filter">
+        
+        </div>
+            <div class="col">
+            <div *ngIf='listFilter' class="form-text text-muted">Filtered by Sujet:{{listFilter}}</div>
+            </div>
+        </div>
+        <div class="table table-hover">
+            <table class='table'>
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Organisme étrangère</th>
+                    <th>type_visite</th>
+                    <th>Sujet</th>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr 
+                *ngFor="let dossier of filteredDossier | slice:startindex:endindex">
+                    <td>{{ dossier.id }}</td>
+                    <td>{{ dossier.organisme_etranger_id }}</td>
+                    <td>{{ dossier.type_visite }}</td>
+                    <td>{{ dossier.sujet }}</td>
+                    <td>{{ dossier.date_deb }}</td>
+                    <td>{{ dossier.date_fin}}</td>
+                    <td >
+                       
+                        <button  class="edit" (click)="edit($event)" [value]="dossier.id">
+                            <i class="material-icons">&#xE254;</i></button>
+                            
+                            <button 
+                            class="delete" >
+                                <i class="material-icons">&#xE872;</i></button>
+                       
+                        
+                                
+                       
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted text-right">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link"  aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li *ngFor="let i of getarray(filteredDossier.length); let in = index" class="page-item">
+                  <button class="page-link" (click)="updateindex(in)">{{in+1}}</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link"   aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+              
+            </ul>
+          </nav>
+       
+    </div>
+</div>

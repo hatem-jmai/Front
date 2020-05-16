@@ -1,0 +1,150 @@
+<div id = "contentToConvert">
+  <div id = "content"  #content > 
+
+  <meta charset="utf-8">
+
+
+<div class="card m-3" >
+    <img src="./assets/img/logo.jpg" class="image" >
+    
+    <div class="card-body" id='fiche'>
+        
+      <form >
+             <div class="form-row" class="titre" >
+                <h1> بطاقة<span style="margin: 3px;"></span> إرشادات<span style="margin: 3px;"></span>  حول<span style="margin: 3px;"></span> مأمورية<span style="margin: 3px;"></span> بالخارج  </h1>
+             </div>
+
+                <div class="form-row">
+                  <div class="col">
+                  </div>
+
+                  <div class="col" class="sujet">
+                    <h4>الوزارة / المؤسسة أو المنشأة <span style="margin: 3px;"></span>العمومية <span>.I </span> </h4>
+                  </div>
+                </div>
+
+                <table class="table table-bordered">
+                    <tr>
+                      <h4 class="titre">   المعهد الوطني <span style="margin: 3px;"></span>  للإحصاء   </h4>
+                  </tr>
+                </table>
+
+                <div class="form-row">
+                    <div class="col">
+                </div>
+                <div class="col" class="sujet">
+                      <h4> معطيات  حول المكلف <span style="margin: 3px;"></span> بمأمورية<span style="margin: 3px;"></span> بالخارج  <span>.II  </span></h4>
+                  </div>
+
+                 
+                  <table class="table table-bordered" >
+                    <tr> 
+                      <td>
+                        <select class="form-control col-sm-8"   [(ngModel)]="id_participant" name="participant" (change)="grade_fonction()">
+                          <option value="" [disabled]="true">selectionner un participant</option>
+                          <option *ngFor="let cadre of cadres"  [value]="cadre.id">
+                            {{cadre.prenom}} {{cadre.nom}}
+                          </option> 
+                        </select>
+                      </td>
+                       <h4 class="sujet">    : الإسم و اللقب   </h4>
+                  </tr>
+                  <tr>
+                    <td> <input type="text" class="form-control"  [value]="gradeFonction"
+                      lang="ar" dir="rtl" > </td>
+                    <h4 class="sujet"> : الرتبة <span>/ </span> الخطة <span style="margin: 3px;"></span>الوظيفية</h4>
+                  </tr>
+                </table>
+
+              </div>
+                
+                <div class="col" class="sujet">
+                  <h4>  معطيات عامة حول <span style="margin: 3px;"></span>المأموية  <span>.III</span> </h4>
+              </div>
+               
+
+
+                <table   class="table table-bordered">
+                    <tr> 
+                      <td>
+                     <label class="label"> (أيام)</label>
+                        <input type="number" class="number" [(ngModel)]="diffInDays" name="duree">  
+                      </td>
+                      <td> <input type="text" class="c" [(ngModel)]="dossier.pays_destination_libelle" name="pays_destination"
+                        lang="ar" dir="rtl" > </td>
+                       
+                       <h4 class="sujet" >   : الوجهة المقصودة <span style="margin: 3px;"></span>والمدة   </h4>
+                  </tr>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td>
+                   <h4 class="sujet" > 
+                     :  هل يتحمل البلد أو الهيكل <span style="margin: 3px;"></span>المقصود
+                   </h4>
+                  </td>
+                 </tr>
+
+                 <tr>   
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_no" name="trans_no">  لا</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_yes" name="trans_yes"> نعم</td>
+                 <td><h4 class="sujet">  مصاريف <span style="margin: 3px;"></span>النقل </h4> 
+                 </td> 
+                </tr>
+
+                <tr>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_no" name="res_no">  لا</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_yes" name="res_yes"> نعم</td>
+                 <td> <h4 class="sujet" >      مصاريف <span style="margin: 3px;"></span>الإقامة  </h4> 
+                 </td> 
+                </tr>
+              </table>
+
+              <table class="table table-bordered">
+                <tr>
+                  
+                  <td> <input  type="text" class="d"  lang="ar" dir="rtl" ></td>
+                
+                  <h4>بيان فحوى المصاريف الأخرى والجهة المتحملة <span style="margin: 3px;"></span>لها </h4>
+                  
+                </tr>
+              </table>
+             
+              <div style="height: 100px;"></div>
+              <div class="col" class="sujet">
+                <h4>  معطيات خصوصية حول <span style="margin: 3px;"></span>المأمورية   <span>.IV </span> </h4>
+            </div>
+            <div class="col"  class="sujet" >
+             <input class="tabrir" type="text" lang="ar" dir="rtl" > 
+            </div>
+
+            
+              
+            <div class="note">
+            <label >
+  تعمر هذه البطاقة بكامل الدقة وجوبا وترفق وجوبا لإذن المأمورية علما وأن نقص تعميرها يترتب عنه عدم <span style="margin: 3px;"></span>الإنجاز</label>
+            
+  <label> (1)</label> 
+
+          <label>
+      يتم إرجاع مصاريف المأمورية في صورة ما إذا اتضح تحملها من قبل البلد المقصود بصفة غير <span style="margin: 3px;"></span>منتظرة
+            </label>
+           <label>(2)</label>
+          </div>
+          
+           
+
+                
+      </form>
+
+
+    </div>
+      <div class="text-center">
+        <input type = "button" class="btn btn-primary mr-1" 
+        value = "telecharger pdf"  (click) = "download()"/>
+        <button class="btn btn-primary mr-1"  (click)="suivant()">Suivant</button>
+        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+        </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,35 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>Admin</h2>
+            <h4>example@email.com</h4>
+        </div>
+        <img src="assets/img/user.png" alt="Soufiane FADIL">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Dossier de Visite</h2>
+   
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/dossiervisite']">
+        <mat-icon>assignment</mat-icon> Dossier de visite (Mission) </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">
+    <mat-icon>assignment</mat-icon> Dossier de visite (formation) </a>
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/liste-dossierVisite']">
+    <mat-icon> list_alt</mat-icon> Liste Dossier de Visites </a>
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Tools</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>import_contacts</mat-icon>
+        Contacts
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>contact_phone</mat-icon>
+        Leads
+    </a>
+
+</mat-nav-list>
