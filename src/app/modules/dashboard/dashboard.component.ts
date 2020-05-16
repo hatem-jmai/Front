@@ -10,6 +10,8 @@ import { Dossier } from 'src/app/entities/dossier';
 import { DatePipe, formatDate } from '@angular/common';
 import { Pays_destination } from 'src/app/entities/pays_destination';
 import { Direction_centrale } from 'src/app/entities/direction_centrale';
+import { cadreINS } from 'src/app/entities/cadreINS';
+import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
 
 export interface PeriodicElement {
  
@@ -48,9 +50,24 @@ cadreINS5=[];
 id="0";
 fonction1:string;
 fonction2:string;
+fonction3:string;
+fonction4:string;
+fonction5:string;
 grade1:string;
 grade2:string;
+grade3:string;
+grade4:string;
+grade5:string;
 dossier1:Dossier;
+frais_residence_ins:boolean;
+frais_transport_ins:boolean;
+tab=[];
+direction1:string;
+direction2:string;
+direction3:string;
+direction4:string;
+direction5:string;
+
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
@@ -60,7 +77,6 @@ dossier1:Dossier;
       this.getAllOrganismesEtrangers();
       this.getAllProgrammes();
       this.getDossier();
-      
     }
     
     else{
@@ -257,6 +273,11 @@ getAllDirections(){
     this.router.navigateByUrl('/dashboard/noteM');
   }
   getDossier(){
+    let obj1:cadreINS;
+    let obj2:cadreINS;
+    let obj3:cadreINS;
+    let obj4:cadreINS;
+    let obj5:cadreINS;
     this.Myservice.getDossier(this.Myservice.id_dossier).subscribe(data=>{
       console.log(data),
       error => console.log(error);
@@ -276,14 +297,43 @@ getAllDirections(){
           this.dossier.date_deb=data[key].date_deb;
           this.dossier.date_fin=data[key].date_fin;
           this.dossier.date_arrive_invitation=data[key].date_arrive_visite;
+          
+            
+            obj1=data[key].cadre_participe[0];
+            obj2=data[key].cadre_participe[1];
+            obj3=data[key].cadre_participe[2];
+            obj4=data[key].cadre_participe[3];
+            obj5=data[key].cadre_participe[4];
+            
+            if(obj1 != null){
+              this.direction1=obj1.direction;
+              this.cadre1.push(obj1);
+            }
+            if(obj2 != null){
+              this.direction2=obj2.direction;
+              this.cadre2.push(obj2);
+            }
+            if(obj3 != null){
+              this.direction3=obj3.direction;
+              this.cadre3.push(obj3);
+            }
+            if(obj4 != null){
+              this.direction4=obj4.direction;
+              this.cadre4.push(obj4);
+            }
+            if(obj5 != null){
+              this.direction5=obj5.direction;
+              this.cadre5.push(obj5);
+            }
+            
+          
+          if(this.dossier.frais_residence == false)
+            this.frais_residence_ins=true;
+          if(this.dossier.frais_transport== false)
+            this.frais_transport_ins=true;  
         }
       }
-      console.log(this.dossier.statut);
     });
-    this.selected();
-  }
-  remplirTableau(){
-    
   }
 
   captureScreen()  
