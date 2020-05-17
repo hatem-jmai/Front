@@ -40,7 +40,6 @@ cadre5=[];
 villes=[];
 Destination:Pays_destination;
 Direction:Direction_centrale;
-ville_destination:string='';
 cadreINS1=[];
 cadreINS2=[];
 cadreINS3=[];
@@ -80,11 +79,12 @@ direction5:string;
     }
     
     else{
-      this.dossier.direction_centrale="";
+      this.dossier.direction="";
     this.dossier.pays_destination_libelle="";
     this.dossier.statut="";
     this.dossier.organisme_etranger_libelle="";
     this.dossier.programme_libelle="";
+    this.dossier.ville="";
     this.dossier.annee=2020;
     this.dossier.type_visite="mission";
     this.dossier.frais_transport=false;
@@ -297,7 +297,13 @@ getAllDirections(){
           this.dossier.date_deb=data[key].date_deb;
           this.dossier.date_fin=data[key].date_fin;
           this.dossier.date_arrive_invitation=data[key].date_arrive_visite;
-          
+          console.log(data[key].ville);
+          console.log(data[key].programme_libelle);
+          console.log(data[key].direction);
+          this.dossier.ville=data[key].ville;
+          console.log(this.dossier.ville);
+          this.dossier.programme_libelle=data[key].programme_libelle;
+          this.dossier.direction=data[key].direction;
             
             obj1=data[key].cadre_participe[0];
             obj2=data[key].cadre_participe[1];

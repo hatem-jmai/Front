@@ -17,7 +17,8 @@ export class Dossier{
     pays_destination_libelle:string;
     organisme_etranger_libelle:string;
     programme_libelle:string;
-    direction_centrale:string;
+    direction:string;
+    ville:string;
     cadre_id=[];
     constructor(){}
     

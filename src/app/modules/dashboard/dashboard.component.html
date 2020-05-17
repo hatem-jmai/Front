@@ -14,7 +14,7 @@
   
                   <div class="form-group col-4">
                       <label>Direction Centrale</label>
-                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.direction_centrale" name="direction">
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.direction" name="direction">
                         <option value="" [disabled]="true">selectionner une direction</option>
                         <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
                           {{direction.libelle_direction}}
@@ -84,7 +84,7 @@
   
                   <div class="form-group col-4">
                       <label>Ville de destination</label>
-                      <select class="form-control" id="type"  [(ngModel)]="ville_destination" name="ville_destination">
+                      <select class="form-control" id="type"  [(ngModel)]="dossier.ville" name="ville">
                          <option value="" [disabled]="true">selectionner une ville</option>
                           <option *ngFor="let ville of villes"  [value]="ville.libelle_ville">
                             {{ville.libelle_ville}}
