@@ -20,6 +20,7 @@ export class Dossier{
     direction:string;
     ville:string;
     cadre_id=[];
+    cadre_participe=[];
     constructor(){}
     
 }

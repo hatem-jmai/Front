@@ -66,7 +66,7 @@ direction2:string;
 direction3:string;
 direction4:string;
 direction5:string;
-
+cadre_participe=[];
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
@@ -76,6 +76,7 @@ direction5:string;
       this.getAllOrganismesEtrangers();
       this.getAllProgrammes();
       this.getDossier();
+      
     }
     
     else{
@@ -251,25 +252,37 @@ getAllDirections(){
     if(cadreINS.length>0)
       cadreDossier.push(cadreINS[0]) ;   
   }
-  createVisiteMission(){
+  createVisite(){
+    this.dossier.cadre_participe=this.cadre_participe;
     console.log(this.dossier);
     this.remplirCadre_id(this.cadreINS1,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS2,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS3,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS4,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS5,this.dossier.cadre_id);
-    console.log(this.dossier.cadre_id);  
-    this.Myservice.createDossier(this.dossier).subscribe((data:any) =>{
-      console.log(data),
-      error => console.log(error),
-      this.Myservice.setDossier(this.dossier);
-
-    });
+    console.log(this.dossier.cadre_id); 
+    if(this.dossier.id != null){
+      this.Myservice.editDossier(this.dossier).subscribe((data:any) =>{
+        console.log(data),
+        error => console.log(error),
+        this.Myservice.setDossier(this.dossier);
+  
+      });
+    }
+    else{
+      this.Myservice.createDossier(this.dossier).subscribe((data:any) =>{
+        console.log(data),
+        error => console.log(error),
+        this.Myservice.setDossier(this.dossier);
+  
+      });
+    }
+    
     //this.registerForm.reset();
   }
   
    suivant(){
-   this.createVisiteMission();
+   this.createVisite();
     this.router.navigateByUrl('/dashboard/noteM');
   }
   getDossier(){
@@ -283,6 +296,7 @@ getAllDirections(){
       error => console.log(error);
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
+          this.dossier.id=data[key].id;
           this.dossier.statut=data[key].statut;
           this.dossier.sujet=data[key].sujet;
           this.dossier.pays_destination_libelle=data[key].pays_destination_id;
@@ -302,9 +316,10 @@ getAllDirections(){
           console.log(data[key].direction);
           this.dossier.ville=data[key].ville;
           console.log(this.dossier.ville);
+          this.selected();
           this.dossier.programme_libelle=data[key].programme_libelle;
           this.dossier.direction=data[key].direction;
-            
+           // à verifier 
             obj1=data[key].cadre_participe[0];
             obj2=data[key].cadre_participe[1];
             obj3=data[key].cadre_participe[2];
@@ -312,22 +327,28 @@ getAllDirections(){
             obj5=data[key].cadre_participe[4];
             
             if(obj1 != null){
+              // verifier les cadres participants
+              this.cadre_participe.push(obj1.id);
               this.direction1=obj1.direction;
               this.cadre1.push(obj1);
             }
             if(obj2 != null){
+              this.cadre_participe.push(obj2.id);
               this.direction2=obj2.direction;
               this.cadre2.push(obj2);
             }
             if(obj3 != null){
+              this.cadre_participe.push(obj3.id);
               this.direction3=obj3.direction;
               this.cadre3.push(obj3);
             }
             if(obj4 != null){
+              this.cadre_participe.push(obj4.id);
               this.direction4=obj4.direction;
               this.cadre4.push(obj4);
             }
             if(obj5 != null){
+              this.cadre_participe.push(obj5.id);
               this.direction5=obj5.direction;
               this.cadre5.push(obj5);
             }

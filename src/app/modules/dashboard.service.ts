@@ -20,6 +20,9 @@ id_dossier:any;
   createDossier(dossier: Dossier):Observable<object>{
     return this.http.post('http://localhost:8000/dossiervisite/new',dossier);
   }
+  editDossier(dossier: Dossier):Observable<object>{
+    return this.http.put('http://localhost:8000/dossiervisite/edit/'+dossier.id,dossier);
+  }
 
   getAllPays():Observable<object>{
     return this.http.get('http://localhost:8000/paysdestination');
