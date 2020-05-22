@@ -25,9 +25,7 @@ const routes: Routes = [{
     {path: 'posts',component: PostsComponent},
     {path: 'borderau',component:BorderouComponent},
     {path: 'rappel-rapport',component:RappelRapportComponent},
-   //{path: 'borderau',component:BorderouComponent},
-   //{path: 'rappel-rapport',component:RappelRapportComponent}
-   {path: 'liste-dossierVisite',component:ListeDossiersComponent}
+    {path: 'liste-dossierVisite',component:ListeDossiersComponent}
   ]
 },
 

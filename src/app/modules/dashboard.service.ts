@@ -4,6 +4,7 @@ import { BehaviorSubject} from 'rxjs';
 import { Dossier } from '../entities/dossier';
 
 import { HttpClient } from '@angular/common/http';
+import { Note } from '../entities/note';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +57,13 @@ id_dossier:any;
   }
   getDossier(id:any):Observable<any>{
     return this.http.get('http://localhost:8000/dossiervisite/'+id);
+  }
+
+  newNote(note: Note):Observable<object>{
+    return this.http.post('http://localhost:8000/note/new',note);
+  }
+  getNote(id: any):Observable<object>{
+    return this.http.get('http://localhost:8000/note/'+id);
   }
 
   

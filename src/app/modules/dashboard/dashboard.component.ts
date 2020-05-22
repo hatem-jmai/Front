@@ -265,7 +265,8 @@ getAllDirections(){
       this.Myservice.editDossier(this.dossier).subscribe((data:any) =>{
         console.log(data),
         error => console.log(error),
-        this.Myservice.setDossier(this.dossier);
+        this.Myservice.setDossier(data);
+
   
       });
     }
@@ -273,8 +274,8 @@ getAllDirections(){
       this.Myservice.createDossier(this.dossier).subscribe((data:any) =>{
         console.log(data),
         error => console.log(error),
-        this.Myservice.setDossier(this.dossier);
-  
+        this.Myservice.setDossier(data);
+        console.log(data.id);
       });
     }
     
