@@ -1,6 +1,6 @@
-export class Note{	
+export class Note{
+    id:number;	
     date:string;
-    type:string;
     piece_jointe:string;
     description:string;
     dossier_id:number;

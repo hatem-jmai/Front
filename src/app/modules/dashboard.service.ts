@@ -63,7 +63,10 @@ id_dossier:any;
     return this.http.post('http://localhost:8000/note/new',note);
   }
   getNote(id: any):Observable<object>{
-    return this.http.get('http://localhost:8000/note/'+id);
+    return this.http.get('http://localhost:8000/note/getNote/'+id);
+  }
+  editNote(note: Note):Observable<object>{
+    return this.http.put('http://localhost:8000/note/edit/'+ note.id,note);
   }
 
   
