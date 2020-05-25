@@ -284,7 +284,7 @@ getAllDirections(){
   
    suivant(){
    this.createVisite();
-    this.router.navigateByUrl('/dashboard/noteM');
+    this.router.navigateByUrl('/dashboard/note');
   }
   getDossier(){
     let obj1:cadreINS;

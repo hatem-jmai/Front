@@ -5,6 +5,7 @@ import { Dossier } from '../entities/dossier';
 
 import { HttpClient } from '@angular/common/http';
 import { Note } from '../entities/note';
+import { Fiche } from '../entities/fiche_renseignement';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +68,19 @@ id_dossier:any;
   }
   editNote(note: Note):Observable<object>{
     return this.http.put('http://localhost:8000/note/edit/'+ note.id,note);
+  }
+
+  newFiche(fiche:Fiche):Observable<object>{
+    return this.http.post('http://localhost:8000/fiches/new',fiche);
+  }
+  getFiche(id: any,id_cadre:any):Observable<object>{
+    return this.http.get('http://localhost:8000/fiches/getFiche/'+id+'/'+id_cadre);
+  }
+  editFiche(fiche: Fiche,id:any):Observable<object>{
+    return this.http.put('http://localhost:8000/fiches/edit/'+ id,Fiche);
+  }
+  deleteFiche(id_dossier: any,id:any):Observable<object>{
+    return this.http.delete('http://localhost:8000/fiches/delete/'+id_dossier+'/'+id);
   }
 
   

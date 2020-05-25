@@ -20,7 +20,7 @@ const routes: Routes = [{
   component: DefaultComponent,
   children: [
     {path: 'dossiervisite',component: DashboardComponent},
-    {path: 'noteM',component: NotemissionComponent},
+    {path: 'note',component: NotemissionComponent},
     {path: 'fiche',component: FicheRenseignementComponent},
     {path: 'posts',component: PostsComponent},
     {path: 'borderau',component:BorderouComponent},
