@@ -1,9 +1,9 @@
-<div id = "contentToConvert">
+<div id="dossier">
   <div id = "content"  #content > 
   <div class="card m-3">
       <h5 class="card-header">Dossier de Visite à l'étranger</h5>
   
-      <div class="card-body" id="dossier">
+      <div class="card-body" >
           <form>
               <div class="form-row">
                   <div class="form-group col-2">
@@ -133,7 +133,7 @@
                   <tbody>
                     <tr>
                       <th>INS</th>
-                      <td> <input type="number" class="numberparticipant" [(ngModel)]="dossier.nbr_participant_ins" name="nbr_participant_ins">&nbsp; participants </td>
+                      <td> <input type="number"  class="numberparticipant" [(ngModel)]="dossier.nbr_participant_ins" name="nbr_participant_ins">&nbsp; participants </td>
                       <td>Transport</td>
                       <td><input type="checkbox" class="check" [(ngModel)]="dossier.frais_transport" name="frais_transport"></td>
                       <td><input type="checkbox"  [(ngModel)]="frais_transport_ins" name="frais_transport_ins"></td>
@@ -158,9 +158,15 @@
                       <th >Direction Centrale</th>
                        <th colspan="3"  class="titre"> Historique des Visites
                           <tr>
-                              <th class="cl"> 2017</th>
-                              <th class="cl">2018</th>
-                              <th class="cl">2019</th>
+                              <th class="cl" >
+                                <input type="text" style="text-align: center; width: 70px;" [(ngModel)]="Year2" name="Year2" [disabled]="true" />
+                              </th>
+                              <th class="cl">
+                                <input type="text" style="text-align: center; width: 70px;" [(ngModel)]="Year1" name="Year1" [disabled]="true"/>
+                              </th>
+                              <th class="cl">
+                                <input type="text" style="text-align: center; width: 70px;" [(ngModel)]="Now" name="Now" [disabled]="true"/>
+                              </th>
                           </tr>    
                           </th>
                       <th >Fonction</th>
@@ -296,11 +302,11 @@
                   <thead>
                     <tr>
                       <th rowspan="2" > Remarque</th>
-                     <th> <input type="text" class="form-control" 
+                     <th> <input type="text" class="form-control" style="text-align: center;"
                       value="تاريخ الحصول على الإذن بالمأمورية" readonly lang="ar" dir="rtl"> </th>
   
                       <th>
-                      <input type="text" class="form-control"
+                      <input type="text" class="form-control" style="text-align: center;"
                        value=" تاريخ إرسال الوثائق الخاصة بالمأمورية إلى الوزارة" readonly lang="ar" dir="rtl"> </th>
                     
                       
@@ -322,14 +328,15 @@
                 </table>
               </div>
           </form>
-          <div class="text-center">
-            <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen()"/>
-              <input class="btn btn-primary mr-1" type="submit" value = "confirmer" (click)="suivant()"/>
-              <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-              <button class="btn btn-secondary"  (click)="Next()">next</button>
-          </div>
+         
       </div>
   </div>
   
   </div>
+  </div>
+  <div class="text-center">
+    <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen()"/>
+      <input class="btn btn-primary mr-1" type="submit" value = "confirmer" (click)="suivant()"/>
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+      <button class="btn btn-secondary"  (click)="Next()">next</button>
   </div>

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
 import * as jspdf from 'jspdf';
 import html2canvas from  'html2canvas' ;
 import * as html2pdf from 'html2pdf.js';
@@ -67,9 +66,12 @@ direction3:string;
 direction4:string;
 direction5:string;
 cadre_participe=[];
+Now:number= new Date().getFullYear();
+Year1:number= new Date().getFullYear()-1;
+Year2:number= new Date().getFullYear()-2;
   constructor(private router:Router,private Myservice:DashboardService) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     if(this.Myservice.id_dossier != null){
       this.getAllDirections();
       this.getAllPays();
@@ -366,19 +368,19 @@ getAllDirections(){
 
   captureScreen()  
   {  
-    var data = document.getElementById('contentToConvert');  
+    var data = document.getElementById('dossier');  
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
-      var imgWidth = 208;   
+      var imgWidth = 212;   
       var pageHeight = 295;    
-      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var imgHeight = (canvas.height * imgWidth / canvas.width)+40;  
       var heightLeft = imgHeight;  
 
       const contentDataURL = canvas.toDataURL('image/png')  
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      var position = 0;  
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-      pdf.save('MYPdf.pdf'); // Generated PDF   
+      var position = 5;  
+      pdf.addImage(contentDataURL, 'PNG', -1, position, imgWidth, imgHeight)  
+      pdf.save('DossierVisite.pdf'); // Generated PDF   
     });  
   }  
 

@@ -1,80 +1,69 @@
-<div class="card m-3">
+<div class="card m-3" id = "post">
     <table >
-     <tr>
-     <td>
- <img src="./assets/img/logo.jpg" class="image" > </td>
+        <tr>
+            <td>
+            <img src="./assets/img/logo.jpg" class="image" > </td>
 
- <td>
-     <div class="right">
- <h5 lang="ar" dir="rtl">الجمهورية التونسية</h5>
- <label>  وزارة التنمية و الإستثمار و التعاون الدولي   </label>
- <h5 lang="ar" dir="rtl">المعهد الوطني للإحصاء</h5>
-</div>
-</td>
-</tr>
-</table>
+            <td>
+                <div class="right">
+                    <h5 lang="ar" dir="rtl">الجمهورية التونسية</h5>
+                    <label>  وزارة التنمية و الإستثمار و التعاون الدولي   </label>
+                    <h5 lang="ar" dir="rtl">المعهد الوطني للإحصاء</h5>
+                </div>
+            </td>
+        </tr>
+    </table>
 
  
- <div class="card-body">
+    <div class="card-body">
     
-         <div class="form-row" class="titre">
+        <div class="form-row" class="titre">
              <h1 lang="ar" dir="rtl">وصل</h1>
              <h1 lang="ar" dir="rtl"> في تسلم إدارة المواصفات والتنسيق الإحصائي </h1>
              <h1 lang="ar" dir="rtl">و التعاون الدولي لوثائق مأمورية</h1>
-         </div>
+        </div>
 
-             <div class="note">
-             <table class="table table-bordered">
-                 <tr>
-                  
-                     <td colspan="3">
-                         <h4 >القائمة بمهمة تتعلق بالمشاركة في </h4>
-                     <td> <input type="text" lang="ar" dir="rtl" class="form-control"
-                         placeholder=" السيد(ة)">
-                        </td>
-                     <td>
-                 <h4 class="y"> يشهد   المدير   المركزي   للنشر   و   الإعلامية   و   التنسيق   ،   أن   السيد(ة) </h4>
-                     </td>
-             </tr>
-             <tr>  <td><input type="date"></td>
-                 
-                 <td>إلى</td>
-                 <td>
-                     <input type="date">
-                 </td>
-                 <h4>والذي إنعقد خلال الفترة من </h4>
-                 <td>
-                     <input type="text" lang="ar" dir="rtl" class="form"
-                         placeholder=" السيد(ة)">
-               
-                     </td>
+            <div class="note">
+                <table class="table table-bordered">
+                    <tr>
                     
-                      </tr>
-                     </table>
+                        <td colspan="3">
+                            <h4 >القائمة بمهمة تتعلق بالمشاركة في </h4>
+                        <td> 
+                            <select class="form-control col-sm-8"   [(ngModel)]="id_participant" name="participant" >
+                                <option value="" [disabled]="true">selectionner un participant</option>
+                                <option *ngFor="let cadre of cadres"  [value]="cadre.id">
+                                  {{cadre.prenom}} {{cadre.nom}}
+                                </option> 
+                            </select>
+                        </td>
+                        <td>
+                            <h4 class="y"> يشهد   المدير   المركزي   للنشر   و   الإعلامية   و   التنسيق   ،   أن   السيد(ة) </h4>
+                        </td>
+                    </tr>
+                    <tr>  
+                        <td><input type="date" [(ngModel)]="date_fin" name="date_fin"></td>
+                        <td>إلى</td>
+                        <td>
+                            <input type="date" [(ngModel)]="date_deb" name="date_deb">
+                        </td>
+                        <h4>والذي إنعقد خلال الفترة من </h4>
+                        <td>
+                            <input type="text" lang="ar" dir="rtl" class="form" [(ngModel)]="sujet" name="sujet">
+                        </td>
+                        
+                    </tr>
+                </table>
 
-                 </div>
+            </div>
                    
               
-             </div>
+    </div>
         
-            
-
-             
-                    
-                 
-          
-
-             <div class="text-center">
-               <button class="btn btn-primary mr-1">telecharger PDf</button>
-               <button class="btn btn-primary mr-1" (click)="suivant()">Suivant</button>
-               <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-             
-           </div>
-              
-         
-           
-
-             
-
-
-     </div>
+</div>
+<div class="text-center">
+    <button class="btn btn-primary mr-1" (click)="download()">telecharger PDf</button>
+    <button class="btn btn-primary mr-1" (click)="suivant()">Suivant</button>
+    <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+  
+</div>

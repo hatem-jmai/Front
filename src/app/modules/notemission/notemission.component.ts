@@ -12,29 +12,25 @@ import { Note } from 'src/app/entities/note';
 export class NotemissionComponent implements OnInit {
 note:Note=new Note();
 sujet:string;
-id:number;
-valid:boolean=false;
+dossier:Dossier=new Dossier();
   constructor(private route:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
-    this.Myservice.myDossier.subscribe(dossier => {
-      console.log(dossier),
-      this.sujet=dossier.sujet;
-      this.note.dossier_id=dossier.id;
-      console.log(dossier.id);
-      this.getNote(dossier.id);
+    this.Myservice.myDossier.subscribe(data => {
+      console.log(data),
+      this.dossier = data;
+      console.log(this.dossier.id);
+      error => console.log(error);
+      this.sujet=this.dossier.sujet;
+      this.note.dossier_id=this.dossier.id; 
+      console.log(this.note.dossier_id);  
+      this.getNote(this.note.dossier_id);  
     });
     
-    
+   
   }
 
   suivant(){
-    console.log(this.note);
-    console.log(this.valid);
-    if(this.valid == true)
-      this.editNote();
-    else
-      this.newNote();
     this.route.navigateByUrl('/dashboard/fiche');
   }
 
@@ -48,9 +44,9 @@ valid:boolean=false;
           this.note.date=data[key].date;
           this.note.description=data[key].description;
           this.note.piece_jointe=data[key].piece_jointe;
+          this.note.dossier_id=data[key].dossier_id;
         }
       }
-      this.valid=true;
     });
   }
   
@@ -59,6 +55,7 @@ valid:boolean=false;
   this.Myservice.editNote(this.note).subscribe(data => {
     console.log(data),
     error => console.log(error);
+    this.getNote(this.note.dossier_id);
   });
 } 
 
@@ -67,6 +64,18 @@ newNote(){
   this.Myservice.newNote(this.note).subscribe(data => {
     console.log(data),
     error => console.log(error);
+    this.getNote(this.note.dossier_id);
+  });
+}
+
+deleteNote(){
+  console.log(this.note);
+  this.Myservice.deleteNote(this.note.id).subscribe(data => {
+    console.log(data),
+    error => console.log(error);
+          this.note.date="";
+          this.note.description="";
+          this.note.piece_jointe="";
   });
 }
  

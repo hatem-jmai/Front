@@ -6,6 +6,5 @@ export class cadreINS{
    fonction:string;
    direction:string;
    
-   
     constructor(){}
 } 

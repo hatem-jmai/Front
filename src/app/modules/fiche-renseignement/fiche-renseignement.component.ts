@@ -100,7 +100,6 @@ export class FicheRenseignementComponent implements OnInit {
             this.fiche.derniere_visite=data[key].derniere_visite;
             this.fiche.date_envoie_rapport=data[key].date_envoie_rapport;
             this.fiche.cadre_ins=this.id_participant;
-            this.valid=true;
           }
         }
       });
@@ -111,14 +110,15 @@ export class FicheRenseignementComponent implements OnInit {
       this.Myservice.newFiche(this.fiche).subscribe((data:any) => {
         console.log(data),
         error => console.log(error);
+        this.getFiche();
       });
     }
     editFiche(){
       console.log(this.fiche);
-      console.log(this.id);
-      this.Myservice.editFiche(this.fiche,this.id).subscribe((data:any) => {
+      this.Myservice.editFiche(this.fiche).subscribe(data => {
         console.log(data),
         error => console.log(error);
+        this.getFiche();
       });
     }
     deleteFiche(){
@@ -133,16 +133,6 @@ export class FicheRenseignementComponent implements OnInit {
       this.fiche.objectif_visite="";
       this.fiche.relation_participant_visite="";
     }
-    ajouter(){
-        this.newFiche(); 
-      }
-    modifier(){
-        this.editFiche();
-    }
-    supprimer(){
-      this.deleteFiche();
-    }
-        
     
     suivant(){
       this.router.navigateByUrl('/dashboard/rappel-rapport');

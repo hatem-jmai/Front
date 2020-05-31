@@ -6,6 +6,7 @@ import { Dossier } from '../entities/dossier';
 import { HttpClient } from '@angular/common/http';
 import { Note } from '../entities/note';
 import { Fiche } from '../entities/fiche_renseignement';
+import { Bordereau } from '../entities/bordereau';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,9 @@ id_dossier:any;
   editNote(note: Note):Observable<object>{
     return this.http.put('http://localhost:8000/note/edit/'+ note.id,note);
   }
+  deleteNote(id:any):Observable<object>{
+    return this.http.delete('http://localhost:8000/note/'+id);
+  }
 
   newFiche(fiche:Fiche):Observable<object>{
     return this.http.post('http://localhost:8000/fiches/new',fiche);
@@ -76,14 +80,24 @@ id_dossier:any;
   getFiche(id: any,id_cadre:any):Observable<object>{
     return this.http.get('http://localhost:8000/fiches/getFiche/'+id+'/'+id_cadre);
   }
-  editFiche(fiche: Fiche,id:any):Observable<object>{
-    return this.http.put('http://localhost:8000/fiches/edit/'+ id,Fiche);
+  editFiche(fiche: Fiche):Observable<object>{
+    return this.http.put('http://localhost:8000/fiches/edit/'+ fiche.id,fiche);
   }
   deleteFiche(id_dossier: any,id:any):Observable<object>{
     return this.http.delete('http://localhost:8000/fiches/delete/'+id_dossier+'/'+id);
   }
 
-  
-
+  getBordereau(id: any):Observable<object>{
+    return this.http.get('http://localhost:8000/bordereau/getBordereau/'+id);
+  }
+  editBordereau(bordereau: Bordereau):Observable<object>{
+    return this.http.put('http://localhost:8000/bordereau/edit/'+ bordereau.id,bordereau);
+  }
+  newBordereau(bordereau: Bordereau):Observable<object>{
+    return this.http.post('http://localhost:8000/bordereau/new',bordereau);
+  }
+  deleteBordereau(id:any):Observable<object>{
+    return this.http.delete('http://localhost:8000/bordereau/'+id);
+  }
 
 }
