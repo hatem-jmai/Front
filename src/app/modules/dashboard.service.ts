@@ -106,6 +106,6 @@ id_cadre:any;
     return this.http.post('http://localhost:8000/cadreINS/new',cadre);
   }
   editcadre(cadre: cadreINS):Observable<object>{
-    return this.http.put('http://localhost:8000/cadre/edit/'+ cadre.id,cadre);
+    return this.http.put('http://localhost:8000/cadreINS/edit/'+ cadre.id,cadre);
   }
 }

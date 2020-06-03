@@ -50,7 +50,6 @@ getcadre(){
   }
 
   ajoute(){
-
     console.log(this.cadre);
     this.Myservice.newcadre(this.cadre).subscribe(data => {
       confirm("seucces") ,console.log(data),
@@ -59,17 +58,18 @@ getcadre(){
   }
 
 
-update(){
-  this.cadre.id=this.Myservice.id_cadre;
-  console.log(this.cadre);
-  this.Myservice.editcadre(this.cadre).subscribe(data =>{
-    console.log()
-    
-       
-   });
+    update(){
+      this.cadre.id=this.Myservice.id_cadre;
+      console.log(this.cadre);
+      this.Myservice.editcadre(this.cadre).subscribe(data =>{
+        console.log(data),
+        error => console.log(error) 
+      }); 
+    }
   
-}
-  
+    cancel(){
+      window.location.reload();
+    }
 
 }
 

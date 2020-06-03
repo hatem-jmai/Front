@@ -35,9 +35,6 @@ export class ListeCadreComponent implements OnInit {
   items=[];
   id:number;
   pageTitle = 'liste Cadre Ins ';
-    imageWidth = 45;
-    imageMargin = 1;
-    showImage = true;
     _listFilter = '';
     
     filteredCadres= [];
@@ -69,15 +66,6 @@ export class ListeCadreComponent implements OnInit {
     return new Array(length);
 
   }
-
-  /* onSearchClear() {
-    this.searchKey = "";
-    this.applyFilter();
-  }
-
-  applyFilter() {
-    this.listData.filter = this.searchKey.trim().toLowerCase();
-  } */
   
     get listFilter(): string {
         return this._listFilter;
