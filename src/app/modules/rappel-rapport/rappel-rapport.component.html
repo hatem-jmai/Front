@@ -1,6 +1,6 @@
-<div id = "contentToConvert" lang="ar">
-    <div id = "content"  #content lang="ar" >
-  <div class="card m-3" >
+<div id = "contentToConvert" >
+    <div id = "content"  #content >
+  <div class="card m-3" id='rap' >
       <table >
        <tr>
        <td>
@@ -15,7 +15,7 @@
   </tr>
   </table>
   
-  <div class="card-body">
+  <div class="card-body" >
   
       <div class="form-row" class="titre">
           <h2 lang="ar" dir="rtl">مذكرة  </h2>
@@ -27,14 +27,20 @@
       <div class="card-body">
           <table class="table table-bordered" >
               <tr> 
-                <td> <input type="text" class="form-control" placeholder="................"
+                <td> <input type="text" class="form-control"[(ngModel)]="direction_centrale" name="direction_centrale"
                   lang="ar" dir="rtl" > 
               </td>
                  <h4 class="right">  : المديرية المركزية   </h4>
             </tr>
             <tr>
-              <td> <input type="text" class="form-control" placeholder="................"
-                lang="ar" dir="rtl" > </td>
+              <td>
+                <select class="form-control col-sm-8"   [(ngModel)]="id_participant" name="participant" >
+                  <option value="" [disabled]="true">selectionner un participant</option>
+                  <option *ngFor="let cadre of cadres"  [value]="cadre.id">
+                    {{cadre.prenom}} {{cadre.nom}}
+                  </option> 
+                </select>
+              </td>
               <h4 class="right">: المشارك   </h4>
             </tr>
           </table>
@@ -47,23 +53,23 @@
   
               <table class="table table-bordered" >
       <tr> 
-        <td> <input type="text" class="form-control" placeholder="................"
+        <td> <input type="text" class="form-control" [(ngModel)]="sujet" name="sujet"
           lang="ar" dir="rtl" > 
       </td>
          <h4 class="right">  : الموضوع  </h4>
     </tr>
     <tr>
-      <td> <input type="text" class="form-control" placeholder="................"
+      <td> <input type="text" class="form-control" [(ngModel)]="adresse" name="adresse"
         lang="ar" dir="rtl" > </td>
       <h4 class="right">: مكان المهمة  </h4>
     </tr>
     <tr>
-      <td> <input type="date" class="form-control" placeholder="................"
+      <td> <input type="date" class="form-control" [(ngModel)]="date_deb" name="date_deb"
         lang="ar" dir="rtl" > </td>
       <h4 class="right">: تاريخ الذهاب   </h4>
     </tr>
     <tr>
-      <td> <input type="date" class="form-control" placeholder="................"
+      <td> <input type="date" class="form-control" [(ngModel)]="date_fin" name="date_fin"
         lang="ar" dir="rtl" > </td>
       <h4 class="right">: تاريخ الإياب </h4>
     </tr>
@@ -180,13 +186,13 @@
   
   
   </div>
+  
+  
+  </div>
+  </div>
   <div class="text-center">
-    <input type = "button" class="btn btn-primary mr-1" 
-    value = "telecharger pdf"  (click) = "captureScreen ()"/>
+    <button  class="btn btn-primary mr-1"   (click) = "download()">telecharger pdf</button>
       <button class="btn btn-primary mr-1"  (click)="suivant()">Suivant</button>
       <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
     
-  </div>
-  
-  </div>
   </div>

@@ -2,23 +2,15 @@ import { Component, OnInit,ViewChild  } from '@angular/core';
 import { MatTableDataSource,MatSort,MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
-
-
 @Component({
   selector: 'app-liste-dossiers',
   templateUrl: './liste-dossiers.component.html',
   styleUrls: ['./liste-dossiers.component.scss']
 })
 export class ListeDossiersComponent implements OnInit {
-  
-  startindex =0;
-  endindex=5;
-
-
-  
   items=[];
   id:number;
-  pageTitle = 'Dossier de visite liste ';
+  pageTitle = 'Dynamic! Game List';
     imageWidth = 45;
     imageMargin = 1;
     showImage = true;
@@ -40,27 +32,6 @@ export class ListeDossiersComponent implements OnInit {
     });
   }
 
-  updateindex(pageIndex){
-  this.startindex= pageIndex * 5;
-  this.endindex= this.startindex + 5;
-  console.log(this.startindex)
-  console.log(this.endindex)
-  }
-
-
-  getarray(length){
-    return new Array(length/2);
-
-  }
-
-  /* onSearchClear() {
-    this.searchKey = "";
-    this.applyFilter();
-  }
-
-  applyFilter() {
-    this.listData.filter = this.searchKey.trim().toLowerCase();
-  } */
   
     get listFilter(): string {
         return this._listFilter;
@@ -87,4 +58,3 @@ export class ListeDossiersComponent implements OnInit {
     }
 
 }
-

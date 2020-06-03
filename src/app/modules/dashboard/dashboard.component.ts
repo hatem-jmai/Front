@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
 import * as jspdf from 'jspdf';
 import html2canvas from  'html2canvas' ;
 import * as html2pdf from 'html2pdf.js';
@@ -10,6 +9,8 @@ import { Dossier } from 'src/app/entities/dossier';
 import { DatePipe, formatDate } from '@angular/common';
 import { Pays_destination } from 'src/app/entities/pays_destination';
 import { Direction_centrale } from 'src/app/entities/direction_centrale';
+import { cadreINS } from 'src/app/entities/cadreINS';
+import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
 
 export interface PeriodicElement {
  
@@ -38,7 +39,6 @@ cadre5=[];
 villes=[];
 Destination:Pays_destination;
 Direction:Direction_centrale;
-ville_destination:string='';
 cadreINS1=[];
 cadreINS2=[];
 cadreINS3=[];
@@ -48,12 +48,30 @@ cadreINS5=[];
 id="0";
 fonction1:string;
 fonction2:string;
+fonction3:string;
+fonction4:string;
+fonction5:string;
 grade1:string;
 grade2:string;
+grade3:string;
+grade4:string;
+grade5:string;
 dossier1:Dossier;
+frais_residence_ins:boolean;
+frais_transport_ins:boolean;
+tab=[];
+direction1:string;
+direction2:string;
+direction3:string;
+direction4:string;
+direction5:string;
+cadre_participe=[];
+Now:number= new Date().getFullYear();
+Year1:number= new Date().getFullYear()-1;
+Year2:number= new Date().getFullYear()-2;
   constructor(private router:Router,private Myservice:DashboardService) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     if(this.Myservice.id_dossier != null){
       this.getAllDirections();
       this.getAllPays();
@@ -64,11 +82,12 @@ dossier1:Dossier;
     }
     
     else{
-      this.dossier.direction_centrale="";
+      this.dossier.direction="";
     this.dossier.pays_destination_libelle="";
     this.dossier.statut="";
     this.dossier.organisme_etranger_libelle="";
     this.dossier.programme_libelle="";
+    this.dossier.ville="";
     this.dossier.annee=2020;
     this.dossier.type_visite="mission";
     this.dossier.frais_transport=false;
@@ -235,33 +254,52 @@ getAllDirections(){
     if(cadreINS.length>0)
       cadreDossier.push(cadreINS[0]) ;   
   }
-  createVisiteMission(){
+  createVisite(){
+    this.dossier.cadre_participe=this.cadre_participe;
     console.log(this.dossier);
     this.remplirCadre_id(this.cadreINS1,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS2,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS3,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS4,this.dossier.cadre_id);
     this.remplirCadre_id(this.cadreINS5,this.dossier.cadre_id);
-    console.log(this.dossier.cadre_id);  
-    this.Myservice.createDossier(this.dossier).subscribe((data:any) =>{
-      console.log(data),
-      error => console.log(error),
-      this.Myservice.setDossier(this.dossier);
+    console.log(this.dossier.cadre_id); 
+    if(this.dossier.id != null){
+      this.Myservice.editDossier(this.dossier).subscribe((data:any) =>{
+        console.log(data),
+        error => console.log(error),
+        this.Myservice.setDossier(data);
 
-    });
+  
+      });
+    }
+    else{
+      this.Myservice.createDossier(this.dossier).subscribe((data:any) =>{
+        console.log(data),
+        error => console.log(error),
+        this.Myservice.setDossier(data);
+        console.log(data.id);
+      });
+    }
+    
     //this.registerForm.reset();
   }
   
    suivant(){
-   this.createVisiteMission();
-    this.router.navigateByUrl('/dashboard/noteM');
+   this.createVisite();
+    this.router.navigateByUrl('/dashboard/note');
   }
   getDossier(){
+    let obj1:cadreINS;
+    let obj2:cadreINS;
+    let obj3:cadreINS;
+    let obj4:cadreINS;
+    let obj5:cadreINS;
     this.Myservice.getDossier(this.Myservice.id_dossier).subscribe(data=>{
       console.log(data),
       error => console.log(error);
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
+          this.dossier.id=data[key].id;
           this.dossier.statut=data[key].statut;
           this.dossier.sujet=data[key].sujet;
           this.dossier.pays_destination_libelle=data[key].pays_destination_id;
@@ -276,31 +314,73 @@ getAllDirections(){
           this.dossier.date_deb=data[key].date_deb;
           this.dossier.date_fin=data[key].date_fin;
           this.dossier.date_arrive_invitation=data[key].date_arrive_visite;
+          console.log(data[key].ville);
+          console.log(data[key].programme_libelle);
+          console.log(data[key].direction);
+          this.dossier.ville=data[key].ville;
+          console.log(this.dossier.ville);
+          this.selected();
+          this.dossier.programme_libelle=data[key].programme_libelle;
+          this.dossier.direction=data[key].direction;
+           // à verifier 
+            obj1=data[key].cadre_participe[0];
+            obj2=data[key].cadre_participe[1];
+            obj3=data[key].cadre_participe[2];
+            obj4=data[key].cadre_participe[3];
+            obj5=data[key].cadre_participe[4];
+            
+            if(obj1 != null){
+              // verifier les cadres participants
+              this.cadre_participe.push(obj1.id);
+              this.direction1=obj1.direction;
+              this.cadre1.push(obj1);
+            }
+            if(obj2 != null){
+              this.cadre_participe.push(obj2.id);
+              this.direction2=obj2.direction;
+              this.cadre2.push(obj2);
+            }
+            if(obj3 != null){
+              this.cadre_participe.push(obj3.id);
+              this.direction3=obj3.direction;
+              this.cadre3.push(obj3);
+            }
+            if(obj4 != null){
+              this.cadre_participe.push(obj4.id);
+              this.direction4=obj4.direction;
+              this.cadre4.push(obj4);
+            }
+            if(obj5 != null){
+              this.cadre_participe.push(obj5.id);
+              this.direction5=obj5.direction;
+              this.cadre5.push(obj5);
+            }
+            
+          
+          if(this.dossier.frais_residence == false)
+            this.frais_residence_ins=true;
+          if(this.dossier.frais_transport== false)
+            this.frais_transport_ins=true;  
         }
       }
-      console.log(this.dossier.statut);
     });
-    this.selected();
-  }
-  remplirTableau(){
-    
   }
 
   captureScreen()  
   {  
-    var data = document.getElementById('contentToConvert');  
+    var data = document.getElementById('dossier');  
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
-      var imgWidth = 208;   
+      var imgWidth = 212;   
       var pageHeight = 295;    
-      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var imgHeight = (canvas.height * imgWidth / canvas.width)+40;  
       var heightLeft = imgHeight;  
 
       const contentDataURL = canvas.toDataURL('image/png')  
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      var position = 0;  
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-      pdf.save('MYPdf.pdf'); // Generated PDF   
+      var position = 5;  
+      pdf.addImage(contentDataURL, 'PNG', -1, position, imgWidth, imgHeight)  
+      pdf.save('DossierVisite.pdf'); // Generated PDF   
     });  
   }  
 

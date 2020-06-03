@@ -10,6 +10,10 @@
     <div class="card-body" id='fiche'>
         
       <form >
+            <div class="date"> 
+              <div class="date_fiche"> <input type="date" class="form-control" [(ngModel)]="fiche.date" name="date"></div> 
+              <div class="titre1"><h5>  : تونس في </h5></div>
+            </div>
              <div class="form-row" class="titre" >
                 <h1> بطاقة<span style="margin: 3px;"></span> إرشادات<span style="margin: 3px;"></span>  حول<span style="margin: 3px;"></span> مأمورية<span style="margin: 3px;"></span> بالخارج  </h1>
              </div>
@@ -103,20 +107,38 @@
               <table class="table table-bordered">
                 <tr>
                   
-                  <td> <input  type="text" class="d"  lang="ar" dir="rtl" ></td>
+                  <td> <input  type="text" class="d"  lang="ar" dir="rtl" [(ngModel)]="fiche.autre_frais" name="autre_frais" ></td>
                 
                   <h4>بيان فحوى المصاريف الأخرى والجهة المتحملة <span style="margin: 3px;"></span>لها </h4>
                   
                 </tr>
               </table>
+              
+              <h4 style="float: right;">  معطيات خصوصية حول <span style="margin: 3px;"></span>المأمورية   <span>.IV </span> </h4>
+              <table class="table-tabrir">
+                <tr>
+                  <td colspan="2"><h5>  : تبرير المأمورية و النتائج المنتظرة من القيام بها </h5></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><input class="input-tabrir" type="text" [(ngModel)]="fiche.objectif_visite" name="objectif_visite"  lang="ar" dir="rtl"  ></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><h5>: إبراز العلاقة بين مشمولات المكلف بالمأموية و موضوعها</h5></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><input class="input-tabrir" type="text" [(ngModel)]="fiche.relation_participant_visite" name="relation_participant_visite"  lang="ar" dir="rtl"  ></td>
+                </tr>
+                
+                <tr>
+                  <td><input  type="text" [(ngModel)]="fiche.derniere_visite" name="derniere_visite"  lang="ar" dir="rtl"  ></td>
+                  <td><h5>: موضوع المأمورية السابقة</h5></td>
+                </tr>
+                <tr>
+                  <td><input  type="text" [(ngModel)]="fiche.date_envoie_rapport" name="date_envoie_rapport"  lang="ar" dir="rtl"  ></td>
+                  <td><h5>: تاريخ إرسال التقارير</h5></td>
+                </tr>
+              </table> 
              
-              <div style="height: 100px;"></div>
-              <div class="col" class="sujet">
-                <h4>  معطيات خصوصية حول <span style="margin: 3px;"></span>المأمورية   <span>.IV </span> </h4>
-            </div>
-            <div class="col"  class="sujet" >
-             <input class="tabrir" type="text" lang="ar" dir="rtl" > 
-            </div>
 
             
               
@@ -140,10 +162,11 @@
 
     </div>
       <div class="text-center">
-        <input type = "button" class="btn btn-primary mr-1" 
-        value = "telecharger pdf"  (click) = "download()"/>
+        <input type = "button" class="btn btn-info" value = "telecharger pdf"  (click) = "download()"/>
+        <button class="btn btn-success"  (click)="newFiche()">Ajouter Fiche</button>
+        <button class="btn btn-warning"  (click)="editFiche()">Modifier Fiche</button>
+        <button class="btn btn-danger"  (click)="deleteFiche()">Supprimer</button>
         <button class="btn btn-primary mr-1"  (click)="suivant()">Suivant</button>
-        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
         </div>
   </div>
 </div>

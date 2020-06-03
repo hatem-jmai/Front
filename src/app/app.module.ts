@@ -12,10 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { RappelRapportComponent } from './modules/rappel-rapport/rappel-rapport.component';
 import { BorderouComponent } from './modules/borderou/borderou.component';
 import { ListeDossiersComponent } from './modules/liste-dossiers/liste-dossiers.component';
-import { MatFormFieldModule, MatIconModule, MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
+import { MatFormFieldModule, MatIconModule,MatDialogModule, MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
+import { ListeCadreComponent } from './modules/liste-cadre/liste-cadre.component';
+import { AjoutecadreComponent } from './modules/ajoutecadre/ajoutecadre.component';
+import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.component';
 
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     RappelRapportComponent,
     BorderouComponent,
     ListeDossiersComponent,
+    ListeCadreComponent,
+    AjoutecadreComponent,
+    TableauSuiviComponent
+
 
     
   ],
@@ -41,7 +47,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    AngularFontAwesomeModule
+    MatDialogModule
+    
     
   ],
   providers: [],

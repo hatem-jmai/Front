@@ -4,6 +4,7 @@ import * as html2pdf from 'html2pdf.js';
 import { Dossier } from 'src/app/entities/dossier';
 import { DashboardService } from '../dashboard.service';
 import * as moment from 'moment';
+import { Fiche } from 'src/app/entities/fiche_renseignement';
 @Component({
   selector: 'app-fiche-renseignement',
   templateUrl: './fiche-renseignement.component.html',
@@ -12,7 +13,7 @@ import * as moment from 'moment';
 export class FicheRenseignementComponent implements OnInit {
   dossier:Dossier;
   id_cadres=[];
-  id_participant:number;
+  id_participant:any;
   gradeFonction:string="";
   cadres=[];
   date_deb:any;
@@ -22,6 +23,9 @@ export class FicheRenseignementComponent implements OnInit {
   frais_trans_yes:boolean;
   frais_res_no:boolean;
   frais_res_yes:boolean;
+  fiche:Fiche=new Fiche();
+  valid:boolean=false;
+  id:any;
     constructor(private router:Router,private Myservice:DashboardService) { }
 
     ngOnInit() {
@@ -29,6 +33,7 @@ export class FicheRenseignementComponent implements OnInit {
         console.log(data),
         this.dossier = data;
         this.id_cadres=this.dossier.cadre_id;
+        this.fiche.dossier_id=this.dossier.id;
         console.log(this.id_cadres);
       });
       this.getCadres();
@@ -53,6 +58,14 @@ export class FicheRenseignementComponent implements OnInit {
       }
       this.gradeFonction=this.cadres[i].fonction+"/"+this.cadres[i].grade;
       console.log(this.gradeFonction);
+      this.fiche.date="";
+      this.fiche.autre_frais="";
+      this.fiche.date_envoie_rapport="";
+      this.fiche.derniere_visite="";
+      this.fiche.objectif_visite="";
+      this.fiche.relation_participant_visite="";
+      this.getFiche();
+
     }
     duree(){
       this.date_deb = moment(this.dossier.date_deb);
@@ -70,9 +83,61 @@ export class FicheRenseignementComponent implements OnInit {
       else
       this.frais_res_no=true;
     }
+
+    getFiche(){
+      this.Myservice.getFiche(this.fiche.dossier_id,this.id_participant).subscribe((data:any) => {
+        console.log(data),
+        error => console.log(error);
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            this.fiche.id=data[key].id;
+            console.log(this.fiche.id);
+            this.id=data[key].id;
+            this.fiche.date=data[key].date;
+            this.fiche.autre_frais=data[key].autre_frais;
+            this.fiche.objectif_visite=data[key].objectif_visite;
+            this.fiche.relation_participant_visite=data[key].relation_participant_visite;
+            this.fiche.derniere_visite=data[key].derniere_visite;
+            this.fiche.date_envoie_rapport=data[key].date_envoie_rapport;
+            this.fiche.cadre_ins=this.id_participant;
+          }
+        }
+      });
+    }
+    newFiche(){
+      this.fiche.cadre_ins=this.id_participant;
+      console.log(this.fiche);
+      this.Myservice.newFiche(this.fiche).subscribe((data:any) => {
+        console.log(data),
+        error => console.log(error);
+        this.getFiche();
+      });
+    }
+    editFiche(){
+      console.log(this.fiche);
+      this.Myservice.editFiche(this.fiche).subscribe(data => {
+        console.log(data),
+        error => console.log(error);
+        this.getFiche();
+      });
+    }
+    deleteFiche(){
+      this.Myservice.deleteFiche(this.fiche.dossier_id,this.fiche.id).subscribe((data:any) => {
+        console.log(data),
+        error => console.log(error);
+      });
+      this.fiche.date="";
+      this.fiche.autre_frais="";
+      this.fiche.date_envoie_rapport="";
+      this.fiche.derniere_visite="";
+      this.fiche.objectif_visite="";
+      this.fiche.relation_participant_visite="";
+    }
+    
     suivant(){
       this.router.navigateByUrl('/dashboard/rappel-rapport');
     }
+
 
     download(){
       const options= {

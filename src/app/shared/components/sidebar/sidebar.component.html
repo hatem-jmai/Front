@@ -12,24 +12,26 @@
     <h2 matSubheader>Dossier de Visite</h2>
    
     <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/dossiervisite']">
-        <mat-icon>assignment</mat-icon> Dossier de visite (Mission) </a>
+        <mat-icon>folder</mat-icon> Dossier de visite (Mission) </a>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">
-    <mat-icon>assignment</mat-icon> Dossier de visite (formation) </a>
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/dossiervisite']">
+    <mat-icon>folder</mat-icon> Dossier de visite (formation) </a>
+
     <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/liste-dossierVisite']">
-    <mat-icon> list_alt</mat-icon> Liste Dossier de Visites </a>
+        <mat-icon>dns</mat-icon> Liste de Dossier </a>
+
     <mat-divider></mat-divider>
 
-    <h2 matSubheader>Tools</h2>
+    <h2 matSubheader>Gestion cadres</h2>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-        <mat-icon>import_contacts</mat-icon>
-        Contacts
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/liste-cadre']">
+        <mat-icon>dns</mat-icon>
+        Liste cadres
     </a>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/table-suivi']">
         <mat-icon>contact_phone</mat-icon>
-        Leads
+        table de suivi
     </a>
 
 </mat-nav-list>

@@ -12,6 +12,9 @@ import { SignInComponent } from './shared/components/sign-in/sign-in.component';
 import { RappelRapportComponent } from './modules/rappel-rapport/rappel-rapport.component';
 import { BorderouComponent } from './modules/borderou/borderou.component';
 import { ListeDossiersComponent } from './modules/liste-dossiers/liste-dossiers.component';
+import { ListeCadreComponent } from './modules/liste-cadre/liste-cadre.component';
+import { AjoutecadreComponent } from './modules/ajoutecadre/ajoutecadre.component';
+import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.component';
 
 
 const routes: Routes = [{
@@ -20,14 +23,15 @@ const routes: Routes = [{
   component: DefaultComponent,
   children: [
     {path: 'dossiervisite',component: DashboardComponent},
-    {path: 'noteM',component: NotemissionComponent},
+    {path: 'note',component: NotemissionComponent},
     {path: 'fiche',component: FicheRenseignementComponent},
     {path: 'posts',component: PostsComponent},
     {path: 'borderau',component:BorderouComponent},
     {path: 'rappel-rapport',component:RappelRapportComponent},
-   //{path: 'borderau',component:BorderouComponent},
-   //{path: 'rappel-rapport',component:RappelRapportComponent}
-   {path: 'liste-dossierVisite',component:ListeDossiersComponent}
+    {path: 'liste-dossierVisite',component:ListeDossiersComponent},
+    {path: 'liste-cadre',component:ListeCadreComponent},
+    {path: 'ajoutecadre',component:AjoutecadreComponent},
+    {path: 'table-suivi',component:TableauSuiviComponent}
   ]
 },
 
