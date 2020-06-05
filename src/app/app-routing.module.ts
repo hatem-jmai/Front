@@ -15,6 +15,7 @@ import { ListeDossiersComponent } from './modules/liste-dossiers/liste-dossiers.
 import { ListeCadreComponent } from './modules/liste-cadre/liste-cadre.component';
 import { AjoutecadreComponent } from './modules/ajoutecadre/ajoutecadre.component';
 import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.component';
+import { ChoseDossierComponent } from './modules/chose-dossier/chose-dossier.component';
 
 
 const routes: Routes = [{
@@ -31,7 +32,8 @@ const routes: Routes = [{
     {path: 'liste-dossierVisite',component:ListeDossiersComponent},
     {path: 'liste-cadre',component:ListeCadreComponent},
     {path: 'ajoutecadre',component:AjoutecadreComponent},
-    {path: 'table-suivi',component:TableauSuiviComponent}
+    {path: 'table-suivi',component:TableauSuiviComponent},
+    {path: 'choisir-dossier',component:ChoseDossierComponent}
   ]
 },
 
