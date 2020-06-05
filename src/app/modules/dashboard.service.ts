@@ -108,4 +108,7 @@ id_cadre:any;
   editcadre(cadre: cadreINS):Observable<object>{
     return this.http.put('http://localhost:8000/cadreINS/edit/'+ cadre.id,cadre);
   }
+  getTableauSuivi():Observable<any>{
+    return this.http.get('http://localhost:8000/dossiervisite/suivi');
+  }
 }
