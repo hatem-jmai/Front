@@ -17,7 +17,9 @@ private dossier = new BehaviorSubject<Dossier>(new Dossier());
 myDossier=this.dossier.asObservable();
 id_dossier:any;
 id_cadre:any;
-  constructor(private http:HttpClient) {};
+  
+
+constructor(private http:HttpClient) {};
   setDossier(dossier:Dossier){
     this.dossier.next(dossier);
   }
@@ -108,4 +110,11 @@ id_cadre:any;
   editcadre(cadre: cadreINS):Observable<object>{
     return this.http.put('http://localhost:8000/cadreINS/edit/'+ cadre.id,cadre);
   }
+
+
+   getTableauSuivi():Observable<any>{
+  return this.http.get('http://localhost:8000/dossiervisite/suivi');
+  }
+
+
 }

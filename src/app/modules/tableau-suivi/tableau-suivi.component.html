@@ -33,17 +33,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor='let dossier of filteredDossier'>
-                    <td>{{ dossier.id }}</td>
-                    <td>{{ dossier.organisme_etranger_id }}</td>
-                    <td>{{ dossier.type_visite }}</td>
-                    <td>{{ dossier.sujet }}</td>
-                    <td>{{ dossier.date_deb }}</td>
-                    <td>{{ dossier.date_fin}}</td>
-                    <td>
-                        <button (click)="edit($event)" class="btn btn-primary" [value]="dossier.id" >view</button>
-                        <button (click)="delete()" class="btn btn-danger">delete</button>
-                    </td>
+                <tr *ngFor='let suivi of tab'>
+                    <td></td>
+                    <td></td>
+                    <td>{{ suivi.type_visite }}</td>
+                    <td>{{ suivi.date_fin }}</td>
+                    <td>{{ suivi.date_deb }}</td>
+                    <td>{{ suivi.pays_destination_lib }}</td>
+                    <td>{{ suivi.ville }}</td>
+                    <td>{{ suivi.objectif_visite }}</td>
+                    <td>{{ suivi.frais_residence }}</td>
+                    <td>{{ suivi.sujet }}</td>
+                    <td>{{ suivi.organisme_etranger_lib }}</td>
+                    <td>{{ suivi.grade }}</td>
+                    <td>{{ suivi.fonction }}</td>
+                    <td>{{ suivi.nom }} {{ suivi.prenom}}</td>
+                    <td>{{ suivi.direction}}</td>
                 </tr>
                 </tbody>
             </table>
