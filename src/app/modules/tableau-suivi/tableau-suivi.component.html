@@ -1,8 +1,12 @@
 <div class='card'>
+    <a style="cursor: pointer;" (click)="exportexcel()">
+        <button>Télécharger</button>
+      </a>
     <div class='card-header'>
         {{pageTitle}}
     </div>
     <div class='card-body'>
+        
         <div class="row">
             <div class="col-3">
                 <input [(ngModel)]="listFilter" type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
@@ -12,7 +16,7 @@
             </div>
         </div>
         <div class='table table-hover'>
-            <table class='table'>
+            <table class='table' id="excel-table">
                 <thead>
                 <tr> 
                     <th>تاريخ إرسال التقرير</th>
@@ -34,8 +38,8 @@
                 </thead>
                 <tbody>
                 <tr *ngFor='let suivi of tab'>
-                    <td></td>
-                    <td></td>
+                    <td>{{ suivi.date_envoie_rapport }}</td>
+                    <td>{{ suivi.date_envoi_documents }}</td>
                     <td>{{ suivi.type_visite }}</td>
                     <td>{{ suivi.date_fin }}</td>
                     <td>{{ suivi.date_deb }}</td>

@@ -8,8 +8,8 @@
               <div class="form-row">
                   <div class="form-group col-2">
                       <label>Date</label>
-                      <input type="date" name="date_arrive_invitation" class="form-control"
-                      [(ngModel)]="dossier.date_arrive_invitation" >
+                      <input type="date" name="date" class="form-control"
+                      [(ngModel)]="dossier.date" >
                   </div>
   
                   <div class="form-group col-4">
@@ -312,8 +312,8 @@
                       
                     </tr>
                     <tr>
-                      <td> <input type="text" class="form-control"> </td>
-                      <td> <input type="text" class="form-control"></td>
+                      <td> <input type="date" class="form-control" [(ngModel)]="dossier.date_arrive_invitation" name="date_arrive_invitation"> </td>
+                      <td> <input type="date" class="form-control" [(ngModel)]="dossier.date_envoi_documents" name="date_envoi_documents"></td>
                     </tr>
                   </thead>
   

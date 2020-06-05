@@ -17,7 +17,7 @@ private dossier = new BehaviorSubject<Dossier>(new Dossier());
 myDossier=this.dossier.asObservable();
 id_dossier:any;
 id_cadre:any;
-  
+typeVisite:string; 
 
 constructor(private http:HttpClient) {};
   setDossier(dossier:Dossier){

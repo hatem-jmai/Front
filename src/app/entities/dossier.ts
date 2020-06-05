@@ -1,6 +1,8 @@
 export class Dossier{	
     id :number;
     date_arrive_invitation :string;
+    date:string;
+    date_envoi_documents:string;
     date_deb :string;
     date_fin :string;
     date_limite_reponce:string;

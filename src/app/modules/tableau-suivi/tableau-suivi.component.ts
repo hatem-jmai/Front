@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 import { TableauSuivi } from 'src/app/entities/tableauSuivi';
-import { cadreINS } from 'src/app/entities/cadreINS';
+import * as XLSX from 'xlsx'; 
 @Component({
   selector: 'app-tableau-suivi',
   templateUrl: './tableau-suivi.component.html',
@@ -13,6 +13,7 @@ export class TableauSuiviComponent implements OnInit {
   suivi:TableauSuivi;
   cadres=[];
   tab=[];
+  fileName= 'TableauSuivi.xlsx';  
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
@@ -40,6 +41,8 @@ export class TableauSuiviComponent implements OnInit {
             this.suivi.date_arrive_visite=data[key].date_arrive_visite;
             this.suivi.date_deb=data[key].date_deb;
             this.suivi.date_fin=data[key].date_fin;
+            this.suivi.date_envoi_documents=data[key].date_envoi_documents;
+            this.suivi.date_envoie_rapport=data[key].date_envoie_rapport;
             this.suivi.frais_residence=data[key].frais_residence;
             this.suivi.frais_transport=data[key].frais_transport;
             this.tab.push(this.suivi);
@@ -49,6 +52,19 @@ export class TableauSuiviComponent implements OnInit {
     });
     console.log(this.tab);
   }
- 
+  exportexcel(): void 
+  {
+     /* table id is passed over here */   
+     let element = document.getElementById('excel-table'); 
+     const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+     /* generate workbook and add the worksheet */
+     const wb: XLSX.WorkBook = XLSX.utils.book_new();
+     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+     /* save to file */
+     XLSX.writeFile(wb, this.fileName);
+    
+  }
 
 }

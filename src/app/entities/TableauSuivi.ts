@@ -1,6 +1,8 @@
 export class TableauSuivi{	
     id_dossier :number;
     date_arrive_visite :string;
+    date_envoie_rapport:string;
+    date_envoi_documents:string;
     date_deb :string;
     date_fin :string;
     sujet :string;

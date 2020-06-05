@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChoseDossierComponent } from './chose-dossier.component';
+import { ChoseDossierComponent } from './choisir-dossier.component';
 
 describe('ChoseDossierComponent', () => {
   let component: ChoseDossierComponent;

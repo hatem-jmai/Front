@@ -16,7 +16,7 @@ import { MatFormFieldModule, MatIconModule,MatDialogModule, MatPaginatorModule, 
 import { ListeCadreComponent } from './modules/liste-cadre/liste-cadre.component';
 import { AjoutecadreComponent } from './modules/ajoutecadre/ajoutecadre.component';
 import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.component';
-import { ChoseDossierComponent } from './modules/chose-dossier/chose-dossier.component';
+import { ChoseDossierComponent } from './modules/choisir-dossier/choisir-dossier.component';
 
 
 
