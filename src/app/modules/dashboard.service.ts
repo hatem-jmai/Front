@@ -110,10 +110,11 @@ constructor(private http:HttpClient) {};
   editcadre(cadre: cadreINS):Observable<object>{
     return this.http.put('http://localhost:8000/cadreINS/edit/'+ cadre.id,cadre);
   }
-
-
    getTableauSuivi():Observable<any>{
   return this.http.get('http://localhost:8000/dossiervisite/suivi');
+  }
+  uploadFiles(file :any):Observable<object>{
+    return this.http.post('http://localhost:8000/uploadFiles/new',file);
   }
 
 
