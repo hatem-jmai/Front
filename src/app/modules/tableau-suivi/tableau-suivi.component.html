@@ -1,0 +1,64 @@
+<div class='card'>
+    <a style="cursor: pointer;" (click)="exportexcel()">
+        <button>Télécharger</button>
+      </a>
+    <div class='card-header'>
+        {{pageTitle}}
+    </div>
+    <div class='card-body'>
+        
+        <div class="row">
+            <div class="col-3">
+                <input [(ngModel)]="listFilter" type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
+            </div>
+            <div class="col">
+                <div *ngIf='listFilter' class="form-text text-muted">Filtered by: {{listFilter}}</div>
+            </div>
+        </div>
+        <div class='table table-hover'>
+            <table class='table' id="excel-table">
+                <thead>
+                <tr> 
+                    <th>تاريخ إرسال التقرير</th>
+                    <th>تاريخ إرسال الوثائق</th>
+                    <th>نوع المهمة</th>
+                    <th>تاريخ النهاية</th>
+                    <th>تاريخ البداية</th>
+                    <th>البلد</th>
+                    <th>المدينة</th>
+                    <th>تبرير مشاركة المعني بالمهمة</th>
+                    <th>تمويل المشاركة</th>
+                    <th>الموضوع</th>
+                    <th>الهيكل المنظم</th>
+                    <th>الرتبة</th>
+                    <th>الخطة الوظيفية</th>
+                    <th>الإسم واللقب</th>
+                    <th>الإدارة المركزية</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let suivi of tab'>
+                    <td>{{ suivi.date_envoie_rapport }}</td>
+                    <td>{{ suivi.date_envoi_documents }}</td>
+                    <td>{{ suivi.type_visite }}</td>
+                    <td>{{ suivi.date_fin }}</td>
+                    <td>{{ suivi.date_deb }}</td>
+                    <td>{{ suivi.pays_destination_lib }}</td>
+                    <td>{{ suivi.ville }}</td>
+                    <td>{{ suivi.objectif_visite }}</td>
+                    <td>{{ frais }}</td>
+                    <td>{{ suivi.sujet }}</td>
+                    <td>{{ suivi.organisme_etranger_lib }}</td>
+                    <td>{{ suivi.grade }}</td>
+                    <td>{{ suivi.fonction }}</td>
+                    <td>{{ suivi.nom }} {{ suivi.prenom}}</td>
+                    <td>{{ suivi.direction}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted text-right">
+        <small>Powered by Angular</small>
+    </div>
+</div>

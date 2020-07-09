@@ -1,0 +1,342 @@
+<div id="dossier">
+  <div id = "content"  #content > 
+  <div class="card m-3">
+      <h5 class="card-header">Dossier de Visite à l'étranger</h5>
+  
+      <div class="card-body" >
+          <form>
+              <div class="form-row">
+                  <div class="form-group col-2">
+                      <label>Date</label>
+                      <input type="date" name="date" class="form-control"
+                      [(ngModel)]="dossier.date" >
+                  </div>
+  
+                  <div class="form-group col-4">
+                      <label>Direction Centrale</label>
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.direction" name="direction">
+                        <option value="" [disabled]="true">selectionner une direction</option>
+                        <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                          {{direction.libelle_direction}}
+                        </option> 
+                      </select>
+                     
+                  </div>
+                  <div class="form-group col-2">
+                      <label>Nature</label>
+                      <input type="text" class="form-control" [(ngModel)]="dossier.nature" name="nature"/>
+                  </div>
+                  
+                  <div class="form-group col-4">
+                      <label>Statut</label>
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.statut" name="statut">
+                        <option value="" [disabled]="true">selectionner une statut</option>
+                              <option  value="En-cours">En-cours</option>
+                              <option  value="Finalise">Finalisé</option>
+                              <option  value="Annule">Annulé</option>
+                      </select>
+                  </div>
+              </div>
+  
+              <div class="form-row">
+              <div class="form-group col-5">
+                  <label>Organisme etrangére</label>
+                  <select class="form-control"[(ngModel)]="dossier.organisme_etranger_libelle"
+                   name="organisme_etranger">
+                    <option value="" [disabled]="true">selectionner un organisme</option>
+                              <option *ngFor="let org of organismes"  [value]="org.libelle_org">
+                                {{org.libelle_org}}
+                              </option>
+                  </select>
+              </div>
+              </div>
+  
+              <div class="form-row">
+                  <div class="form-group col">
+                      <label>Programmme de coopération</label>
+                      <select class="form-control col-sm-8" id="type"  [(ngModel)]="dossier.programme_libelle" name="programme_cooperation">
+                        <option value="" [disabled]="true">selectionner un programme</option>
+                                  <option *ngFor="let prog of programmes"  [value]="prog.libelle_prog">
+                                    {{prog.libelle_prog}}
+                                  </option>
+                      </select>
+                  </div>  
+              </div>
+              
+              <div class="form-row">
+                  <div class="form-group col">
+                      <label>Sujet</label>
+                      <input type="text" class="form-control" [(ngModel)]="dossier.sujet" name="sujet"/>
+                  </div>  
+  
+              </div>
+  
+              <div class="form-row">
+                  <div class="form-group col-4">
+                      <label>Pays de destination</label>
+                      <select class="form-control" id="type"  [(ngModel)]="dossier.pays_destination_libelle" name="pays_destination" (change)="selected()">
+                              <option value="" [disabled]="true" selected="selected" >selectionner une pays</option>
+                              <option *ngFor="let Pays of pays" [value]="Pays.libelle_pays">
+                                {{Pays.libelle_pays}}
+                              </option>
+                        </select>
+                  </div>
+  
+                  <div class="form-group col-4">
+                      <label>Ville de destination</label>
+                      <select class="form-control" id="type"  [(ngModel)]="dossier.ville" name="ville">
+                         <option value="" [disabled]="true">selectionner une ville</option>
+                          <option *ngFor="let ville of villes"  [value]="ville.libelle_ville">
+                            {{ville.libelle_ville}}
+                          </option>
+                      </select>
+                  </div>
+                  <div class="form-group col-4">
+                      <label>Langues de travail</label>
+                      <input type="text"  class="form-control" [(ngModel)]="dossier.langues" name="langues"/>
+                  </div>
+              </div>
+  
+                  
+              <div class="form-row">
+                  <div class="form-group col-4">
+                      <label>Date de début</label>
+                      <input type="date" class="form-control" [(ngModel)]="dossier.date_deb" name="date_deb">
+                  </div>
+  
+                  <div class="form-group col-4">
+                      <label>Date de fin </label>
+                      <input type="date"  class="form-control"  [(ngModel)]="dossier.date_fin" name="date_fin"
+                       />
+                     
+                  </div>
+                  <div class="form-group col-4">
+                      <label>Date limite de réponse</label>
+                      <input type="date" class="form-control"  [(ngModel)]="dossier.date_limite_reponce"  name="date_limite_reponce"
+                       />
+                     
+                  </div>
+              </div>
+  
+  
+              <table class="table table-bordered" >
+                  <thead>
+                    <tr>
+                      <th colspan="2" >Nbre participants</th>
+                
+                      <th >Prise en charge</th>
+                      <th >Organisme Etrangere</th>
+                      <th >INS</th>
+                    </tr>
+                  </thead>
+  
+                  <tbody>
+                    <tr>
+                      <th>INS</th>
+                      <td> <input type="number"  class="numberparticipant" [(ngModel)]="dossier.nbr_participant_ins" name="nbr_participant_ins">&nbsp; participants </td>
+                      <td>Transport</td>
+                      <td><input type="checkbox" class="check" [(ngModel)]="dossier.frais_transport" name="frais_transport"></td>
+                      <td><input type="checkbox"  [(ngModel)]="frais_transport_ins" name="frais_transport_ins"></td>
+                    </tr>
+                    <tr>
+                      <th>SP</th>
+                      <td><input type="number" class="numberparticipant" [(ngModel)]="dossier.nbr_participant_sp" name="nbr_participant_sp">&nbsp; participants</td>
+                      <td>Résidence</td>
+                      <td><input type="checkbox" class="check" [(ngModel)]="dossier.frais_residence" name="frais_residence"></td>
+                      <td><input type="checkbox" [(ngModel)]="frais_residence_ins" name="frais_residence_ins"></td>
+                    </tr>
+                   
+                    
+                      
+                  </tbody>
+                </table>
+  
+  
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th >Direction Centrale</th>
+                       <th colspan="3"  class="titre"> Historique des Visites
+                          <tr>
+                              <th class="cl" >
+                                <input type="text" style="text-align: center; width: 70px;" [(ngModel)]="Year2" name="Year2" [disabled]="true" />
+                              </th>
+                              <th class="cl">
+                                <input type="text" style="text-align: center; width: 70px;" [(ngModel)]="Year1" name="Year1" [disabled]="true"/>
+                              </th>
+                              <th class="cl">
+                                <input type="text" style="text-align: center; width: 70px;" [(ngModel)]="Now" name="Now" [disabled]="true"/>
+                              </th>
+                          </tr>    
+                          </th>
+                      <th >Fonction</th>
+                      <th >Grade</th>
+                      <th >participants</th>
+                    </tr>
+                  </thead>
+  
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select class="form-controll col-sm-8" id="1" [(ngModel)]="direction1"  name="direction_centrale1" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
+                      <td><input type="text" class="form-control" readonly [value]="annee1[0] ? annee1[0] : '0' "></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee1[1] ? annee1[1] : '0' "></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee1[2] ? annee1[2] : '0' "></td>
+                      <td><input type="text" class="form-control" readonly name="fonction1" [(ngModel)]="fonction1" [value]="cadreINS1[1]" ></td>
+                      <td><input type="text" class="form-control" readonly name="grade1" [(ngModel)]="grade1" [value]="cadreINS1[2]" ></td>
+                      <td>
+                        <select class="form-control" id="1"  name="cadreINS1" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option  *ngFor="let cadre of cadre1"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select class="form-control col-sm-8" id="2" [(ngModel)]="direction2"   name="direction_centrale2" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
+                      <td><input type="text" class="form-control" readonly [value]="annee2[0] ? annee2[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee2[1] ? annee2[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee2[2] ? annee2[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly  name="fonction2" [(ngModel)]="fonction2" [value]="cadreINS2[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade2" [(ngModel)]="grade2" [value]="cadreINS2[2]"></td>
+                      <td>
+                        <select class="form-control" id="2"   name="cadreINS2" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre2"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select class="form-control col-sm-8" id="3" [(ngModel)]="direction3"   name="direction_centrale3" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
+                      <td><input type="text" class="form-control" readonly [value]="annee3[0] ? annee3[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee3[1] ? annee3[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee3[2] ? annee3[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly name="fonction3" [(ngModel)]="fonction3" [value]="cadreINS3[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade3" [(ngModel)]="grade3" [value]="cadreINS3[2]"></td>
+                      <td>
+                        <select class="form-control" id="3"   name="cadreINS3" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre3"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select class="form-control col-sm-8" id="4" [(ngModel)]="direction4"   name="direction_centrale4" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
+                      <td><input type="text" class="form-control" readonly  [value]="annee4[0] ? annee4[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee4[1] ? annee4[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee4[2] ? annee4[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly name="fonction4" [(ngModel)]="fonction4" [value]="cadreINS4[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade4" [(ngModel)]="grade4" [value]="cadreINS4[2]"></td>
+                      <td>
+                        <select class="form-control" id="4"   name="cadreINS4" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre4"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select class="form-control col-sm-8" id="5" [(ngModel)]="direction5"   name="direction_centrale5" (change)="getCadreParDirection($event)">
+                          <option value="" [disabled]="true">selectionner une direction</option>
+                          <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                            {{direction.libelle_direction}}
+                          </option> 
+                        </select>
+                      </td>
+                      <td><input type="text" class="form-control" readonly [value]="annee5[0] ? annee5[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee5[1] ? annee5[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee5[2] ? annee5[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly name="fonction5" [(ngModel)]="fonction5" [value]="cadreINS5[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade5" [(ngModel)]="grade5" [value]="cadreINS5[2]"></td>
+                      <td>
+                        <select class="form-control" id="5"   name="cadreINS5" (change)="getCadre($event)">
+                          <option value="" [disabled]="true">selectionner un cadre</option>
+                          <option *ngFor="let cadre of cadre5"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                          </option>
+                        </select>
+                      </td>
+                    </tr>
+                   
+                    
+                      
+                  </tbody>
+                </table>
+  
+                <div class="hatem">
+                <table class="table table-bordered" >
+                  <thead>
+                    <tr>
+                      <th rowspan="2" > Remarque</th>
+                     <th> <input type="text" class="form-control" style="text-align: center;"
+                      value="تاريخ الحصول على الإذن بالمأمورية" readonly lang="ar" dir="rtl"> </th>
+  
+                      <th>
+                      <input type="text" class="form-control" style="text-align: center;"
+                       value=" تاريخ إرسال الوثائق الخاصة بالمأمورية إلى الوزارة" readonly lang="ar" dir="rtl"> </th>
+                    
+                      
+                    </tr>
+                    <tr>
+                      <td> <input type="date" class="form-control" [(ngModel)]="dossier.date_arrive_invitation" name="date_arrive_invitation"> </td>
+                      <td> <input type="date" class="form-control" [(ngModel)]="dossier.date_envoi_documents" name="date_envoi_documents"></td>
+                    </tr>
+                  </thead>
+  
+                  <tbody>
+                   
+                   
+                  
+                   
+                    
+                      
+                  </tbody>
+                </table>
+              </div>
+          </form>
+         
+      </div>
+  </div>
+  
+  </div>
+  </div>
+  <div class="text-center">
+    <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen()"/>
+      <input class="btn btn-primary mr-1" type="submit" value = "confirmer" (click)="suivant()"/>
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+      <button class="btn btn-secondary"  (click)="Next()">next</button>
+  </div>

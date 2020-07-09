@@ -1,0 +1,59 @@
+
+<div class='card'>
+    <div class="card-header card-header-info">
+        <h4 class="card-title ">Simple Table</h4>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+   <!--  <div class='card-header' style="color:firebrick">
+        {{pageTitle}}
+    </div> -->
+    <div class='card-body'>
+        <div class="row">
+            <div class="col-3">
+                <input [(ngModel)]="listFilter" type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
+            </div>
+            <div class="col">
+                <div *ngIf='listFilter' class="form-text text-muted">Filtered by: {{listFilter}}</div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class='table'>
+                <thead class="text-info">
+                <tr>
+                    <th>numero du dossier</th>
+                    <th>Emplacement des documents</th>
+                    <th>Organisme étrangère</th>
+                    <th>type_visite</th>
+                    <th>Sujet</th>
+                    <th>Ville</th>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let dossier of filteredDossier'>
+                    <td>{{ dossier.id }}</td>
+                    <td>C:\xampp\htdocs\backend_pfe\
+                        public\uploads</td>
+                    <td>{{ dossier.organisme_etranger_id }}</td>
+                    <td>{{ dossier.type_visite }}</td>
+                    <td>{{ dossier.sujet }}</td>
+                    <td>{{ dossier.ville }}</td>
+                    <td>{{ dossier.date_deb }}</td>
+                    <td>{{ dossier.date_fin}}</td>
+                    <td>{{ dossier.statut }}</td>
+                    
+                    <td>
+                        <button (click)="edit($event)" class="btn btn-primary" [value]="dossier.id" >view</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted text-right">
+        <small>Powered by Angular</small>
+    </div>
+</div>

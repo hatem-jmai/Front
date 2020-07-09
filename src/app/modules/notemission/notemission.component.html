@@ -1,0 +1,45 @@
+<div class="card m-3" >
+  <img src="./assets/img/logo.jpg" class="image" >
+  
+  <div class="card-body">
+      <form class="form">
+        
+        <div class="date">
+            <input type="date" class="form-control" [(ngModel)]="note.date" name="date">
+          </div>
+          <div class="form-row" class="titre">
+              <h1>مذكرة</h1>
+              <h1>{{titre}}</h1>
+          </div>
+          <table class="table table-bordered" >
+            <tr> 
+              <td> <input type="text" class="sous-titre1" [(ngModel)]="sujet" name="sujet" 
+                lang="ar" dir="rtl" /> </td>
+               <h4 class="sous-titre1">    الموضوع   </h4>
+          </tr>
+          <tr>
+            <td> <input type="text" class="doc" [(ngModel)]="note.piece_jointe" name="documents" 
+              lang="ar" dir="rtl" > </td>
+            <h4 class="sous-titre2"> المرفقات</h4>
+          </tr>
+        </table>
+
+                <div class="form-row" class="tt">
+                      <h4 class="sujet"><span>،</span> تحية طيبة وبعد</h4>
+                      <textarea lang="ar" [(ngModel)]="note.description" name="description"
+                       dir="rtl"  class="tt"  >
+                       </textarea>
+                       <h4 class="left">والســـــلام</h4>
+              </div>
+
+      </form>
+
+  </div>
+  <div class="btns">
+        <button  class="btn btn-primary mr-1"  (click) = "printTest()">telecharger pdf</button>
+        <button class="btn btn-primary mr-1" (click)="newNote()">Ajouter</button>
+        <button class="btn btn-primary mr-1" (click)="editNote()">Modifier</button>
+        <button class="btn btn-primary mr-1" (click)="deleteNote()">Supprimer</button>
+        <button class="btn btn-secondary"  (click)="suivant()">Suivant</button>
+  </div>
+</div>

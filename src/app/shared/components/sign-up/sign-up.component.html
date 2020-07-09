@@ -1,0 +1,41 @@
+<div class="container">
+    <mat-card class="card">
+            <mat-card-title class="title">Sign up</mat-card-title>
+            <div class="columns">
+                <mat-card-content class="card-content">
+                    <div class="form-group">
+                        <mat-icon aria-hidden="false"  class="icon">person</mat-icon>
+                        <mat-form-field class="input">        
+                            <input matInput type="text" placeholder="Your UserName" >
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-icon aria-hidden="false"  class="icon">email</mat-icon>
+                        <mat-form-field class="input">        
+                            <input matInput type="text" placeholder="Your Email" >
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-icon aria-hidden="false"  class="icon">https</mat-icon>
+                        <mat-form-field class="input">        
+                            <input matInput type="text" placeholder="Your Password" >
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-icon aria-hidden="false"  class="icon">lock</mat-icon>
+                        <mat-form-field class="input">        
+                            <input matInput type="text" placeholder="Repeat your password" >
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+            
+                <div class="card-image">
+                    <img  src="../../assets/img/signup-image.jpg" alt="sing up image">
+                </div>
+            </div>
+        <mat-card-actions class="actions">
+            <button  type="submit" class="btn" class="btn btn-primary" >Register</button>
+            <a routerLinkActive="active" routerLink="/sign-in" class="signup-image-link">I am already a member</a>
+        </mat-card-actions>
+    </mat-card>
+</div>
