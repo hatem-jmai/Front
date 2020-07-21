@@ -1,7 +1,6 @@
-<mat-nav-list>
+<mat-nav-list class="side">
     <div class="profile-card">
         <div class="header">
-            <h4 class="text-info">Welcome</h4>
             <img src="assets/img/dash.jpg" > 
         </div>
         
@@ -11,16 +10,19 @@
 
     <h2 matSubheader >Dossier de Visite</h2>
 
-    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/acceuil']">
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/accueil']">
         <mat-icon>dashboard</mat-icon> Dashboard </a>
 
    
     <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/choisir-dossier']">
-        <mat-icon>folder</mat-icon> choisier type de dossier </a>
+        <mat-icon>folder</mat-icon> choisir type de dossier </a>
 
 
     <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/liste-dossierVisite']">
         <mat-icon>dns</mat-icon> Liste de Dossier </a>
+    
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/uploadFiles']">
+        <mat-icon>cloud_upload</mat-icon> Upload Rapport</a>
 
     <mat-divider></mat-divider>
 

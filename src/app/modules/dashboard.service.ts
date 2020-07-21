@@ -148,4 +148,7 @@ constructor(private http:HttpClient) {};
   changePassword(user:User):Observable<object>{
     return this.http.put('http://localhost:8000/changerPassword',user);
   }
+  dashbord():Observable<object>{
+    return this.http.get('http://localhost:8000/dashbord/');
+  }
 }

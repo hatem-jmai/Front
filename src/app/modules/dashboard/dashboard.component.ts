@@ -77,6 +77,8 @@ annee3=[];
 annee4=[];
 annee5=[];
 nbr:any;
+typeVisiteTab=false;
+
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {    
@@ -100,6 +102,10 @@ nbr:any;
     this.dossier.ville="";
     this.dossier.annee=this.Now.toString();
     this.dossier.type_visite=this.Myservice.typeVisite;
+    if(this.dossier.type_visite == "formation")
+      this.typeVisiteTab=true;
+    else
+    this.typeVisiteTab=false;
     console.log(this.dossier.type_visite);
     this.dossier.frais_transport=false;
     this.dossier.frais_residence=false;
@@ -342,6 +348,7 @@ getAllDirections(){
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
           this.dossier.id=data[key].id;
+          this.dossier.type_visite=data[key].type_visite;
           this.dossier.statut=data[key].statut;
           this.dossier.sujet=data[key].sujet;
           this.dossier.pays_destination_libelle=data[key].pays_destination_id;

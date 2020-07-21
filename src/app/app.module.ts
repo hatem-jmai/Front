@@ -21,8 +21,11 @@ import { UploadFilesComponent } from './modules/upload-files/upload-files.compon
 import { StatistiqueComponent } from './modules/statistique/statistique.component';
 import { ListOrganismeComponent } from './modules/list-organisme/list-organisme.component';
 import { AjouteOrganismeComponent } from './modules/ajoute-organisme/ajoute-organisme.component';
-import { AcceuilComponent } from './acceuil/acceuil.component';
-
+import { AccueilComponent } from './modules/accueil/accueil.component';
+import { ChangePasswordComponent } from './modules/change-password/change-password.component';
+import { AuthGuard } from './modules/auth.guard'; 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JWTInterceptor } from './modules/jwt.interceptor';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
     StatistiqueComponent,
     ListOrganismeComponent,
     AjouteOrganismeComponent,
-    AcceuilComponent
+    AccueilComponent,
+    ChangePasswordComponent,
     
 
 
@@ -60,11 +64,17 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+
     
     
   ],
-  providers: [],
+  providers: [AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JWTInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [AjouteOrganismeComponent]
 })
